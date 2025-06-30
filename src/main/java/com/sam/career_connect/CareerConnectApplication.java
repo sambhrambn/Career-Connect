@@ -12,5 +12,6 @@ public class CareerConnectApplication {
 		System.out.print("hellooo");
 		System.out.print("application");
 		System.out.print("java");
+		System.out.print("java");
 	}
 }
