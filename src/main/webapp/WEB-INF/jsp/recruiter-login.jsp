@@ -200,7 +200,7 @@
 
 <div class="login-container">
     <h2>Recruiter Login</h2>
-    <form action="/student/login" method="post">
+    <form action="/recruiter/dashboard" method="post">
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" required placeholder="Enter your email">
 

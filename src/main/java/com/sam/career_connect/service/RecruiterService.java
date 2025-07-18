@@ -17,10 +17,13 @@ public class RecruiterService {
 
     @Autowired
     private UserRepository userRepository;
+
     @Autowired
     private RecruiterRepository recruiterRepository;
+
     @Autowired
     private JobRepository jobRepository;
+
     public Recruiter validateRecruiter(String email, String password) {
         User user = userRepository.findByEmailAndPassword(email,password).orElse(null);
         if(user==null){
@@ -37,6 +40,6 @@ public class RecruiterService {
     }
 
     public List<Job> getJobs(Long recruiterId) {
-   return jobRepository.findAllByRecruiterId(recruiterId);
+        return jobRepository.findAllByRecruiterId(recruiterId);
     }
 }

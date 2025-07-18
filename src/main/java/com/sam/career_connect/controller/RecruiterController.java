@@ -44,13 +44,13 @@ public class RecruiterController {
             return "recruiter-login";
         }
     }
+
     @GetMapping("/post-jobs")
     public String postJobs(Model model, HttpSession session){
         Long recruiterId = (Long) session.getAttribute("recruiterId");
         Recruiter recruiter = recruiterService.getRecruiter(recruiterId);
         List<Job> jobList=recruiterService.getJobs(recruiterId);
-model.addAttribute("jobList",jobList);
-
+        model.addAttribute("jobList",jobList);
         return "post-job";
     }
 

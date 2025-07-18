@@ -9,10 +9,6 @@ public class CareerConnectApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(CareerConnectApplication.class, args);
-		System.out.print("hellooo");
-		System.out.print("application");
-		System.out.print("java");
-		System.out.print("java");
-		System.out.print("practising.....");
+
 	}
 }
