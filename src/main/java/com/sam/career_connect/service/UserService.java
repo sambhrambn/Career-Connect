@@ -1,6 +1,7 @@
 package com.sam.career_connect.service;
 
 import com.sam.career_connect.common.Role;
+import com.sam.career_connect.dto.RecruiterDto;
 import com.sam.career_connect.dto.StudentDto;
 import com.sam.career_connect.entity.Student;
 import com.sam.career_connect.entity.User;
@@ -25,6 +26,14 @@ public class UserService {
         user.setEmail(studentDto.getEmail());
         user.setPassword(studentDto.getPassword());
         user.setRole(studentDto.getRole());
+        userRepository.save(user);
+        return  user;
+    }
+    public User registerUser(RecruiterDto recruiterDto) {
+        User user = new User();
+        user.setEmail(recruiterDto.getEmail());
+        user.setPassword(recruiterDto.getPassword());
+        user.setRole(recruiterDto.getRole());
         userRepository.save(user);
         return  user;
     }

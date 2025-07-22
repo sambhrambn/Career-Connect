@@ -26,6 +26,10 @@ public class RecruiterController {
     private RecruiterService recruiterService;
 
     @Autowired
+    private UserService userService;
+
+
+    @Autowired
     private ApplicationService applicationService;
 
     @Autowired
@@ -118,10 +122,10 @@ public class RecruiterController {
     }
 
     @PostMapping("/register")
-    public String registerStudent( @Validated(OnCreate.class) @ModelAttribute("recruiter") StudentDto studentDto,
+    public String registerStudent( @Validated(OnCreate.class) @ModelAttribute("recruiter") RecruiterDto recruiterDto,
                                    @RequestParam("imageFile") MultipartFile imageFile) {
-        User user= userService.registerUser(studentDto);
-        studentService.registerStudent(studentDto,user,imageFile);
+        User user= userService.registerUser(recruiterDto);
+        recruiterService.registerRecruiter(recruiterDto,user,imageFile);
         return "home-page";
     }
 
