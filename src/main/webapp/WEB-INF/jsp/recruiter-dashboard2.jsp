@@ -1,15 +1,15 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Recruiter Dashboard - Campus Career Portal</title>
     <style>
         :root {
             --charcoal: #2c2c2c;
             --skyblue: #4aa3df;
             --softwhite: #f5f5f5;
-            --muted: #cccccc;
-            --card-bg: #3b3b3b;
+            --hoverblue: #76c7ff;
         }
 
         * {
@@ -18,18 +18,37 @@
             box-sizing: border-box;
         }
 
-        body {
+        html, body {
+            height: 100%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(rgba(44,44,44,0.9), rgba(44,44,44,0.9)),
-                url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0') no-repeat center center/cover;
+        }
+
+        body {
+            background: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
             color: var(--softwhite);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 0;
+        }
+
+        header, footer, main {
+            position: relative;
+            z-index: 2;
         }
 
         header {
             background-color: var(--charcoal);
+            color: var(--softwhite);
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
@@ -47,45 +66,38 @@
             color: var(--softwhite);
             margin-left: 1.5rem;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: bold;
             transition: color 0.3s ease;
         }
 
         nav a:hover {
-            color: var(--skyblue);
+            color: var(--hoverblue);
         }
 
         main {
-            flex: 1;
             padding: 3rem 4rem;
         }
 
         h1 {
             font-size: 2.6rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             color: var(--skyblue);
-            animation: fadeInDown 1s ease forwards;
         }
 
         p.subtitle {
             font-size: 1.2rem;
-            color: var(--muted);
-            margin-bottom: 3rem;
-            animation: fadeInUp 1s ease forwards;
-            animation-delay: 0.3s;
+            color: #bbbbbb;
+            margin-bottom: 2.5rem;
         }
 
         .dashboard-section {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            animation: fadeInUp 1s ease forwards;
-            animation-delay: 0.6s;
-            margin-bottom: 3rem;
         }
 
         .card {
-            background-color: var(--card-bg);
+            background-color: rgba(255, 255, 255, 0.08);
             border: 1px solid var(--skyblue);
             border-radius: 12px;
             padding: 1.5rem;
@@ -94,7 +106,7 @@
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
         }
 
         .card h3 {
@@ -105,7 +117,7 @@
         .card p {
             font-size: 1rem;
             color: var(--softwhite);
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         .btn {
@@ -121,90 +133,73 @@
         }
 
         .btn:hover {
-            background-color: #368cc4;
+            background-color: var(--hoverblue);
         }
 
         footer {
             background-color: var(--charcoal);
-            color: var(--muted);
-            padding: 2rem 2rem 1rem;
+            color: var(--softwhite);
+            padding: 2rem 1rem 1rem;
+            margin-top: 3rem;
         }
 
         .footer-container {
             display: flex;
+            justify-content: space-around;
             flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
         }
 
         .footer-column {
             flex: 1 1 250px;
+            padding: 1rem;
         }
 
         .footer-column h3 {
             color: var(--skyblue);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
 
         .footer-column ul {
             list-style: none;
-            padding-left: 0;
         }
 
         .footer-column ul li {
-            margin-bottom: 0.5rem;
+            margin: 0.5rem 0;
         }
 
         .footer-column ul li a {
             color: var(--softwhite);
             text-decoration: none;
-            transition: color 0.3s ease;
         }
 
         .footer-column ul li a:hover {
             color: var(--skyblue);
         }
 
-        .social-icons a {
-            display: inline-block;
-            margin-right: 10px;
-        }
-
-        .social-icons img {
+        .social-icons a img {
             width: 24px;
-            height: 24px;
-            filter: grayscale(100%) brightness(1.2);
-            transition: filter 0.3s ease;
-        }
-
-        .social-icons img:hover {
-            filter: none;
+            margin-right: 0.5rem;
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: 1rem;
-            border-top: 1px solid #444;
-            margin-top: 2rem;
-            font-size: 0.9rem;
+            border-top: 1px solid var(--skyblue);
+            margin-top: 1rem;
         }
 
-        @keyframes fadeInDown {
-            from {opacity: 0; transform: translateY(-40px);}
-            to {opacity: 1; transform: translateY(0);}
-        }
-
-        @keyframes fadeInUp {
-            from {opacity: 0; transform: translateY(40px);}
-            to {opacity: 1; transform: translateY(0);}
-        }
-
-        @media (max-width: 900px) {
+        @media (max-width: 768px) {
             main {
                 padding: 2rem;
             }
+
             nav a {
                 margin-left: 1rem;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -215,7 +210,7 @@
     <div class="logo">Campus Career Portal</div>
     <nav>
         <a href="/recruiter/profile">Profile</a>
-        <a href="/recruiter/post-job">Post Job</a>
+        <a href="/recruiter/post-jobs">Post Job</a>
         <a href="/recruiter/applicants">Applicants</a>
         <a href="/logout">Logout</a>
     </nav>
@@ -236,13 +231,13 @@
         <div class="card">
             <h3>Post a New Job</h3>
             <p>Create job opportunities and publish them to attract talented students.</p>
-            <a class="btn" href="pp3.html">Post Job</a>
+            <a class="btn" href="/recruiter/job-form">Post Job</a>
         </div>
 
         <div class="card">
             <h3>View Applicants</h3>
             <p>Check who applied to your job listings and take actions like shortlist or reject.</p>
-            <a class="btn" href="pp4.html">View Applicants</a>
+            <a class="btn" href="/recruiter/applicants">View Applicants</a>
         </div>
 
         <div class="card">

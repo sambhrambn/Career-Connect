@@ -2,8 +2,15 @@ package com.sam.career_connect.entity;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.sam.career_connect.common.Gender;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Pattern;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.util.List;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
@@ -29,6 +36,33 @@ public class Recruiter {
     @Column(nullable = false)
     private String designation;
 
+    @NotBlank
+    @Column(nullable = false, length = 255)
+    private String address;
+
+    @NotBlank(message = "Phone number is required")
+    @Pattern(regexp = "^[0-9]{10}$", message = "Phone number must be exactly 10 digits")
+    @Column(nullable = false)
+    private String phoneNumber;
+
+    @NotBlank(message = "Objective is required")
+    @Column(nullable = false)
+    private String objective;
+
+
+    @Past
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(nullable = false)
+    private LocalDate dob;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 10)
+    private Gender gender;
+
+    @Column(nullable = false)
+    private String imagePath;
+
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -38,6 +72,54 @@ public class Recruiter {
 
     public Long getId() {
         return id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getObjective() {
+        return objective;
+    }
+
+    public void setObjective(String objective) {
+        this.objective = objective;
+    }
+
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public void setId(Long id) {
@@ -72,6 +154,23 @@ public class Recruiter {
         return designation;
     }
 
+    @Override
+    public String toString() {
+        return "Recruiter{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", companyName='" + companyName + '\'' +
+                ", designation='" + designation + '\'' +
+                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", objective='" + objective + '\'' +
+                ", dob=" + dob +
+                ", gender=" + gender +
+                ", imagePath='" + imagePath + '\'' +
+                '}';
+    }
+
     public void setDesignation(String designation) {
         this.designation = designation;
     }
@@ -92,15 +191,5 @@ public class Recruiter {
         this.jobs = jobs;
     }
 
-    @Override
-    public String toString() {
-        return "Recruiter{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", companyName='" + companyName + '\'' +
-                ", designation='" + designation + '\'' +
 
-                '}';
-    }
 }

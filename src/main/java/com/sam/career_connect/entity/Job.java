@@ -46,13 +46,13 @@ public class Job {
     @Column(nullable = false)
     private Integer maxApplications;
 
-    @Column(nullable = false)
+    @Column(name = "is_visible", nullable = false)
     private Boolean visible;
 
     @Column(nullable = false)
     private LocalDate postedAt;
 
-    @Column(nullable = false)
+    @Column(name="is_active" ,nullable = false)
     private Boolean active;
 
     @ManyToOne

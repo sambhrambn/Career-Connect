@@ -59,4 +59,25 @@ public class ApplicationService {
     public List<Application> getApplications(Long studentId) {
         return applicationRepository.findAllByStudentId(studentId);
     }
+
+    public List<Application> getApplicants(Long recruiterId) {
+        return applicationRepository.findAllByJobRecruiterIdAndStatus(recruiterId,ApplicationStatus.APPLIED);
+    }
+
+    public void updateApplicationStatus(Long applicationId) {
+        Application app = applicationRepository.findById(applicationId).orElse(null);
+        if(app!=null){
+            app.setStatus(ApplicationStatus.SHORTLISTED);
+            applicationRepository.save(app);
+        }
+
+    }
+
+    public void rejectApplicationStatus(Long applicationId) {
+        Application app = applicationRepository.findById(applicationId).orElse(null);
+        if(app!=null){
+            app.setStatus(ApplicationStatus.REJECTED);
+            applicationRepository.save(app);
+        }
+    }
 }
