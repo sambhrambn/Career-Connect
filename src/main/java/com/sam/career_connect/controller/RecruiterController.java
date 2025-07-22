@@ -1,18 +1,19 @@
 package com.sam.career_connect.controller;
 
+import com.sam.career_connect.dto.RecruiterDto;
 import com.sam.career_connect.dto.StudentDto;
-import com.sam.career_connect.entity.Application;
-import com.sam.career_connect.entity.Job;
-import com.sam.career_connect.entity.Recruiter;
-import com.sam.career_connect.entity.Student;
+import com.sam.career_connect.entity.*;
 import com.sam.career_connect.service.ApplicationService;
 import com.sam.career_connect.service.JobService;
 import com.sam.career_connect.service.RecruiterService;
+import com.sam.career_connect.validation.OnCreate;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -105,4 +106,19 @@ public class RecruiterController {
         model.addAttribute("user", recruiter.getUser());
         return "recruiter-dashboard2";
     }
+
+    @GetMapping("/register-form")
+    public String registerPage(Model model){
+        model.addAttribute("recruiter", new RecruiterDto());
+        return "recruiter-registration";
+    }
+
+    @PostMapping("/register")
+    public String registerStudent( @Validated(OnCreate.class) @ModelAttribute("recruiter") StudentDto studentDto,
+                                   @RequestParam("imageFile") MultipartFile imageFile) {
+        User user= userService.registerUser(studentDto);
+        studentService.registerStudent(studentDto,user,imageFile);
+        return "home-page";
+    }
+
 }

@@ -272,7 +272,7 @@
     <p>Welcome to the Campus Career Portal — your all-in-one platform to explore jobs, manage applications, and unlock your professional journey. Students, recruiters, and admins — everything you need is here.</p>
     <div class="cta-buttons">
         <a href="/student/register-form">Join as Student</a>
-        <a href="/recruiter/register">Join as Recruiter</a>
+        <a href="/recruiter/register-form">Join as Recruiter</a>
     </div>
 </section>
 

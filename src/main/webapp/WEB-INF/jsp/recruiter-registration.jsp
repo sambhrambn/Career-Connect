@@ -267,6 +267,117 @@
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
     }
+    footer {
+                background-color: #1f1f1f;
+                color: var(--muted);
+                border-top: 2px solid #4aa3df;
+                margin-top: 3rem;
+                font-size: 0.95rem;
+            }
+
+            .footer-container {
+                display: flex;
+                justify-content: space-between;
+                padding: 2.5rem 4rem;
+                flex-wrap: wrap;
+            }
+
+            .footer-column {
+                flex: 1;
+                min-width: 220px;
+                margin-bottom: 1.5rem;
+            }
+
+            .footer-column h3 {
+                color: var(--skyblue);
+                margin-bottom: 1rem;
+                font-size: 1.2rem;
+            }
+
+            .footer-column p,
+            .footer-column li {
+                color: var(--softwhite);
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            .footer-column ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .footer-column li a {
+                color: var(--softwhite);
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+            .footer-column li a:hover {
+                color: var(--skyblue);
+            }
+
+            .footer-bottom {
+                text-align: center;
+                padding: 1rem;
+                background-color: #161616;
+                font-size: 0.85rem;
+                color: var(--muted);
+                border-top: 1px solid #333;
+            }
+
+            .social-icons {
+                margin-top: 1rem;
+            }
+
+            .social-icons a {
+                display: inline-block;
+                margin-right: 0.8rem;
+                transition: transform 0.3s ease;
+            }
+
+            .social-icons a:hover {
+                transform: scale(1.1);
+            }
+
+            .social-icons img {
+                width: 24px;
+                height: 24px;
+                filter: brightness(0) invert(1);
+            }
+
+            @media (max-width: 900px) {
+                .features {
+                    flex-direction: column;
+                    padding: 2rem;
+                }
+
+                .feature-card {
+                    margin-bottom: 1.5rem;
+                }
+
+                .hero h1 {
+                    font-size: 2.2rem;
+                }
+
+                .cta-buttons a {
+                    display: block;
+                    margin: 1rem auto;
+                }
+
+                nav a {
+                    margin-left: 1rem;
+                }
+
+                .footer-container {
+                    flex-direction: column;
+                    padding: 2rem;
+                }
+
+                .footer-column {
+                    margin-bottom: 2rem;
+                }
+            }
+
 </style>
 </head>
 <body>
@@ -372,9 +483,7 @@
             </div>
         </div>
     </div>
-    <div class="footer-bottom">
-        © 2025 Campus Career Portal. All rights reserved.
-    </div>
+
 </footer>
 </body>
 </html>
