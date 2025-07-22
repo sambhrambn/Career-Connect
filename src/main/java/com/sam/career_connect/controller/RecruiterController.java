@@ -6,6 +6,7 @@ import com.sam.career_connect.entity.*;
 import com.sam.career_connect.service.ApplicationService;
 import com.sam.career_connect.service.JobService;
 import com.sam.career_connect.service.RecruiterService;
+import com.sam.career_connect.service.UserService;
 import com.sam.career_connect.validation.OnCreate;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class RecruiterController {
 
     @Autowired
     private JobService jobService;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/login")
     public String studentLoginForm(){

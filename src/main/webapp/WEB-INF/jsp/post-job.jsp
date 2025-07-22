@@ -12,6 +12,7 @@
       --hoverblue: #76c7ff;
       --softwhite: #f5f5f5;
       --muted: #cccccc;
+      --danger: #ff4d4d;
     }
 
     * {
@@ -122,6 +123,39 @@
       margin-bottom: 0.3rem;
     }
 
+    .job-buttons {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .job-buttons a {
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .invisible-btn {
+      background-color: var(--skyblue);
+      color: #fff;
+    }
+
+    .invisible-btn:hover {
+      background-color: var(--hoverblue);
+    }
+
+    .deactivate-btn {
+      background-color: var(--danger);
+      color: #fff;
+    }
+
+    .deactivate-btn:hover {
+      background-color: #e60000;
+    }
+
     footer {
       background-color: var(--charcoal);
       color: var(--softwhite);
@@ -206,6 +240,10 @@
         <p><strong>Location:</strong> ${job.jobLocation}</p>
         <p><strong>Workmode:</strong> ${job.workMode}</p>
         <p><strong>Type:</strong> ${job.jobType}</p>
+        <div class="job-buttons">
+          <a href="/recruiter/jobs/${job.id}/toggleVisibility" class="invisible-btn">Make Invisible</a>
+          <a href="/recruiter/jobs/${job.id}/deactivate" class="deactivate-btn">Deactivate</a>
+        </div>
       </div>
     </c:forEach>
   </section>
