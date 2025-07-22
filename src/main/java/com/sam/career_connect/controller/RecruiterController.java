@@ -6,6 +6,7 @@ import com.sam.career_connect.entity.*;
 import com.sam.career_connect.service.ApplicationService;
 import com.sam.career_connect.service.JobService;
 import com.sam.career_connect.service.RecruiterService;
+import com.sam.career_connect.service.UserService;
 import com.sam.career_connect.validation.OnCreate;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ public class RecruiterController {
 
     @Autowired
     private RecruiterService recruiterService;
+
+    @Autowired
+    private UserService userService;
+
 
     @Autowired
     private ApplicationService applicationService;
@@ -114,10 +119,10 @@ public class RecruiterController {
     }
 
     @PostMapping("/register")
-    public String registerStudent( @Validated(OnCreate.class) @ModelAttribute("recruiter") StudentDto studentDto,
+    public String registerStudent( @Validated(OnCreate.class) @ModelAttribute("recruiter") RecruiterDto recruiterDto,
                                    @RequestParam("imageFile") MultipartFile imageFile) {
-        User user= userService.registerUser(studentDto);
-        studentService.registerStudent(studentDto,user,imageFile);
+        User user= userService.registerUser(recruiterDto);
+        recruiterService.registerRecruiter(recruiterDto,user,imageFile);
         return "home-page";
     }
 

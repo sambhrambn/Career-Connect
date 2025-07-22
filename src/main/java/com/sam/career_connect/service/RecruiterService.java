@@ -52,39 +52,45 @@ public class RecruiterService {
     return recruiterRepository.getById(recruiterId);
     }
 
+    private String getExtension(String fileName) {
+        return fileName.substring(fileName.lastIndexOf('.') + 1);
+    }
+
+
     public List<Job> getJobs(Long recruiterId) {
         return jobRepository.findAllByRecruiterId(recruiterId);
     }
 
-//    public void registerRecruiter(RecruiterDto recruiterDto, User user, MultipartFile imageFile) {
-//        Recruiter recruiter = new Recruiter();
-//        student.setFirstName(studentDto.getFirstName());
-//        student.setLastName(studentDto.getLastName());
-//        student.setDob(studentDto.getDob());
-//        student.setGender(studentDto.getGender());
-//        student.setSkills(studentDto.getSkills());
-//        student.setAddress(studentDto.getAddress());
-//        student.setImagePath("example path");
-//        student.setPhoneNumber(studentDto.getPhoneNumber());
-//        student.setObjective(studentDto.getObjective());
-//        student.setUser(user);
-//        Student savedStudent = studentRepository.save(student);
-//
-//        try{
-//
-//            if (!imageFile.isEmpty()) {
-//                String extension = getExtension(imageFile.getOriginalFilename());
-//                String fileName = "student_" + savedStudent.getId() + "." + extension;
-//
-//                Path path = Paths.get(uploadDir, fileName);
-//                Files.createDirectories(path.getParent());
-//                Files.copy(imageFile.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-//                savedStudent.setImagePath("/uploads/" + fileName);
-//                studentRepository.save(savedStudent);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public void registerRecruiter(RecruiterDto recruiterDto, User user, MultipartFile imageFile) {
+          Recruiter recruiter = new Recruiter();
+          recruiter.setFirstName(recruiterDto.getFirstName());
+          recruiter.setLastName(recruiterDto.getLastName());
+          recruiter.setCompanyName(recruiterDto.getCompanyName());
+          recruiter.setDesignation(recruiterDto.getDesignation());
+          recruiter.setDob(recruiterDto.getDob());
+          recruiter.setGender(recruiterDto.getGender());
+          recruiter.setAddress(recruiterDto.getAddress());
+          recruiter.setImagePath("example path");
+          recruiter.setPhoneNumber(recruiterDto.getPhoneNumber());
+          recruiter.setObjective(recruiterDto.getObjective());
+          recruiter.setUser(user);
+          Recruiter savedRecruiter = recruiterRepository.save(recruiter);
+
+         try{
+
+            if (!imageFile.isEmpty()) {
+               String extension = getExtension(imageFile.getOriginalFilename());
+               String fileName = "recruiter_" + savedRecruiter.getId() + "." + extension;
+
+                Path path = Paths.get(uploadDir, fileName);
+                Files.createDirectories(path.getParent());
+                Files.copy(imageFile.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+                savedRecruiter.setImagePath("/uploads/" + fileName);
+                recruiterRepository.save(savedRecruiter);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
