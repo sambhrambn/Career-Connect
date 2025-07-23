@@ -228,7 +228,7 @@
             <a href="/admin/recruiters">View All Recruiters</a>
             <a href="/admin/jobs">View All Jobs</a>
             <a href="/admin/users">Manage Users</a>
-            <a href="/admin/jobs/toggle">Toggle Job Visibility</a>
+            <a href="/admin/toggle">Toggle Job Visibility</a>
             <a href="/admin/stats">View Detailed Stats</a>
         </div>
     </div>

@@ -241,11 +241,11 @@
         <tr>
           <td data-label="Job ID">${job.id}</td>
           <td data-label="Title">${job.jobTitle}</td>
-          <td data-label="Recruiter">${job.recruiterName}</td>
+          <td data-label="Recruiter">${job.recruiter.firstName} ${job.recruiter.lastName}</td>
           <td data-label="Location">${job.jobLocation}</td>
           <td data-label="Status">
-            <span class="visibility-chip ${job.isVisible ? 'visible' : 'hidden'}">
-              ${job.isVisible ? 'Visible' : 'Hidden'}
+            <span class="visibility-chip ${job.visible ? 'visible' : 'hidden'}">
+              ${job.visible ? 'Visible' : 'Hidden'}
             </span>
           </td>
           <td data-label="Action">

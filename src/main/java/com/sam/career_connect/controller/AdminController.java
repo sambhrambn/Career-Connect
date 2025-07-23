@@ -87,6 +87,12 @@ public class AdminController {
         model.addAttribute("users", users);
         return "manage-users";
     }
+    @GetMapping("/toggle")
+    public String jobsToggle(Model model){
+        List<Job> jobs= jobRepository.findAll();
+        model.addAttribute("jobs", jobs);
+        return "jobs-toggle";
+    }
 
 
 }
