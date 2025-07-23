@@ -246,7 +246,7 @@
                           ${user.recruiter.createdAt}
                         </c:when>
                         <c:when test="${user.role == 'STUDENT'}">
-                          ${user.student..createdAt}
+                          ${user.student.createdAt}
                         </c:when>
                         <c:otherwise>
                           ${user.firstName} ${user.lastName}
