@@ -92,17 +92,11 @@
     }
 
     .container {
-      max-width: 1100px;
-      margin: 3rem auto;
-      padding: 2rem;
-      background-color: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--skyblue);
-      border-radius: 12px;
-      position: relative;
-      z-index: 1;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      color: var(--softwhite);
-    }
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+            color: var(--softwhite);
+        }
 
     .title {
       font-size: 24px;
