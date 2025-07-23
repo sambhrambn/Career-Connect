@@ -3,9 +3,11 @@ package com.sam.career_connect.controller;
 import com.sam.career_connect.entity.Job;
 import com.sam.career_connect.entity.Recruiter;
 import com.sam.career_connect.entity.Student;
+import com.sam.career_connect.entity.User;
 import com.sam.career_connect.repository.JobRepository;
 import com.sam.career_connect.repository.RecruiterRepository;
 import com.sam.career_connect.repository.StudentRepository;
+import com.sam.career_connect.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,6 +38,9 @@ public class AdminController {
 
     @Autowired
     private JobRepository jobRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/login")
     public String adminLoginForm(){
@@ -75,6 +80,14 @@ public class AdminController {
         model.addAttribute("jobs", jobs);
         return "admin-jobs";
     }
+
+    @GetMapping("/users")
+    public String manageUsers(Model model){
+        List<User> users= userRepository.findAll();
+        model.addAttribute("users", users);
+        return "manage-users";
+    }
+
 
 }
 //    @GetMapping("/students")
