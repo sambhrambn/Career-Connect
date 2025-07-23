@@ -1,4 +1,10 @@
 package com.sam.career_connect.repository;
 
-public interface ExperienceRepository {
+import com.sam.career_connect.entity.Experience;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ExperienceRepository extends JpaRepository<Experience, Long> {
+
 }

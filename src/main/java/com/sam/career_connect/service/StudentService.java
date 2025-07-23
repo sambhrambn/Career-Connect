@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -78,6 +79,7 @@ public class StudentService {
         student.setPhoneNumber(studentDto.getPhoneNumber());
         student.setObjective(studentDto.getObjective());
         student.setUser(user);
+        student.setCreatedAt(LocalDate.now());
         Student savedStudent = studentRepository.save(student);
 
         try{

@@ -7,37 +7,107 @@
   <title>Toggle Job Visibility - Admin Panel</title>
   <style>
     :root {
-      --primary: #003366;
-      --accent: #007bff;
+      --charcoal: #2c2c2c;
+      --skyblue: #4aa3df;
+      --softwhite: #f5f5f5;
+      --hoverblue: #76c7ff;
       --success: #28a745;
       --danger: #dc3545;
-      --bg: #f5f7fa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg);
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      z-index: 0;
     }
 
     header {
-      background-color: var(--primary);
-      color: white;
+      position: relative;
+      z-index: 2;
+      background-color: var(--charcoal);
+      color: var(--softwhite);
       padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     header h1 {
       font-size: 22px;
+      color: var(--skyblue);
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .header-buttons a {
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background 0.3s ease;
+    }
+
+    .back-btn {
+      background-color: var(--skyblue);
+      color: var(--charcoal);
+    }
+
+    .back-btn:hover {
+      background-color: var(--hoverblue);
+    }
+
+    .logout-btn {
+      background-color: var(--danger);
+      color: white;
+    }
+
+    .logout-btn:hover {
+      background-color: #a91515;
     }
 
     .container {
-      padding: 30px;
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--skyblue);
+      border-radius: 12px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      color: var(--softwhite);
     }
 
     .title {
       font-size: 24px;
       margin-bottom: 20px;
-      color: var(--primary);
+      color: var(--skyblue);
     }
 
     .search-bar {
@@ -49,29 +119,32 @@
       padding: 10px;
       font-size: 14px;
       border-radius: 6px;
-      border: 1px solid #ccc;
+      border: none;
+      background-color: #eee;
+      color: #000;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.07);
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      color: var(--softwhite);
     }
 
     th, td {
       padding: 12px 15px;
       text-align: left;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
     th {
-      background-color: #e9f1ff;
-      color: var(--primary);
+      background-color: rgba(74, 163, 223, 0.2);
+      color: var(--skyblue);
     }
 
     tr:nth-child(even) {
-      background-color: #f9f9f9;
+      background-color: rgba(255, 255, 255, 0.05);
     }
 
     .visibility-chip {
@@ -91,8 +164,8 @@
     }
 
     .toggle-btn {
-      background-color: var(--accent);
-      color: white;
+      background-color: var(--skyblue);
+      color: var(--charcoal);
       padding: 6px 14px;
       border: none;
       border-radius: 5px;
@@ -103,7 +176,7 @@
     }
 
     .toggle-btn:hover {
-      background-color: var(--primary);
+      background-color: var(--hoverblue);
     }
 
     @media (max-width: 768px) {
@@ -117,7 +190,7 @@
 
       tr {
         margin-bottom: 15px;
-        background: white;
+        background: rgba(255, 255, 255, 0.08);
         border-radius: 8px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       }
@@ -135,7 +208,7 @@
         top: 12px;
         left: 15px;
         font-weight: bold;
-        color: #333;
+        color: var(--skyblue);
       }
     }
   </style>
@@ -144,6 +217,10 @@
 
 <header>
   <h1>Career Connect Admin | Toggle Job Visibility</h1>
+  <div class="header-buttons">
+    <a href="/admin/dashboard" class="back-btn">Back</a>
+    <a href="/logout" class="logout-btn">Logout</a>
+  </div>
 </header>
 
 <div class="container">
@@ -178,10 +255,7 @@
             </span>
           </td>
           <td data-label="Action">
-            <a class="toggle-btn"
-               href="/admin/jobs/${job.id}/toggle-visibility">
-              Toggle
-            </a>
+            <a class="toggle-btn" href="/admin/jobs/${job.id}/toggle-visibility">Toggle</a>
           </td>
         </tr>
       </c:forEach>

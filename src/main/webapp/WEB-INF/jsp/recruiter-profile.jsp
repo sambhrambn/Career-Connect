@@ -240,8 +240,8 @@
     </style>
 
     <script>
-        function toggleEducationForm() {
-            const form = document.getElementById('educationForm');
+        function toggleExperienceForm() {
+            const form = document.getElementById('experienceForm');
             form.style.display = form.style.display === 'none' ? 'block' : 'none';
         }
     </script>
@@ -265,48 +265,45 @@
         <p><strong>Objective:</strong> ${recruiter.objective}</p>
         <p><strong>Company:</strong> ${recruiter.companyName}</p>
         <p><strong>Designation:</strong> ${recruiter.designation}</p>
-        <p><strong>Email:</strong> ${user.email}</p>
+        <p><strong>Email:</strong> ${recruiter.user.email}</p>
         <p><strong>Phone:</strong> ${recruiter.phoneNumber}</p>
         <p><strong>DOB:</strong> ${recruiter.dob}</p>
         <p><strong>Address:</strong> ${recruiter.address}</p>
 
         <div class="action-buttons">
-            <button onclick="location.href='/student/student-edit'">Edit Profile</button>
-            <button onclick="toggleEducationForm()">Add Education</button>
+            <button onclick="location.href='/recruiter/edit'">Edit Profile</button>
         </div>
     </div>
 </section>
 
 <section class="education-section">
-    <h2>Education History</h2>
+    <h2>Professional Experience</h2>
     <div class="timeline">
-        <c:forEach var="edu" items="${student.educations}">
+        <c:forEach var="exp" items="${recruiter.experiences}">
             <div class="timeline-entry">
-                <h3>${edu.level} in ${edu.stream}</h3>
-                <p>${edu.institutionName} | ${edu.startDate}  ${edu.endDate}</p>
-                <p>${edu.grade}</p>
+                <h3>${exp.jobTitle} at ${exp.companyName}</h3>
+                <p><strong>Experience:</strong> ${exp.yoe} years</p>
+                <p>${exp.description}</p>
             </div>
         </c:forEach>
     </div>
 
-    <div id="educationForm" class="education-form">
-        <h3>Add New Education</h3>
-        <form:form method="post" action="/student/add-education" modelAttribute="education">
-            <form:label path="level">Education Level</form:label>
-            <form:select path="level" required="true">
-                <form:option value="" label="-- Select Level --"/>
-                <form:options items="${educationLevels}" />
-            </form:select>
-
-            <form:input path="institutionName" placeholder="Institution Name" required="true"/>
-            <form:input path="stream" placeholder="Stream (e.g., Computer Science)" required="true"/>
-            <form:input path="grade" placeholder="Grade/CGPA/Percentage" required="true"/>
-            <form:input path="startDate" type="date" placeholder="YYYY-MM-DD" required="true"/>
-            <form:input path="endDate" type="date" placeholder="YYYY-MM-DD" required="true"/>
+    <div id="experienceForm" class="education-form">
+        <h3>Add New Experience</h3>
+        <form:form method="post" action="/recruiter/add-experience" modelAttribute="experience">
+            <form:input path="companyName" placeholder="Company Name" required="true" />
+            <form:input path="jobTitle" placeholder="Job Title" required="true" />
+            <form:input path="yoe" type="number" step="0.1" min="0" placeholder="Years of Experience" required="true" />
+            <form:textarea path="description" placeholder="Describe your role or projects" required="true" rows="4"/>
             <button type="submit">Save</button>
         </form:form>
     </div>
+
+    <div class="action-buttons">
+        <button onclick="toggleExperienceForm()">Add Experience</button>
+    </div>
 </section>
+
 
 <footer>
     <div class="footer-container">

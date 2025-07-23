@@ -3,6 +3,7 @@ package com.sam.career_connect.service;
 import com.sam.career_connect.common.Role;
 import com.sam.career_connect.dto.RecruiterDto;
 import com.sam.career_connect.dto.StudentDto;
+import com.sam.career_connect.entity.Recruiter;
 import com.sam.career_connect.entity.Student;
 import com.sam.career_connect.entity.User;
 import com.sam.career_connect.repository.UserRepository;
@@ -39,6 +40,19 @@ public class UserService {
     }
 
     public User updateUser(StudentDto studentDto, Student student) {
+        User user = userRepository.findById(student.getUser().getId())
+                .orElseThrow(() -> new RuntimeException("User not found")); // This is already managed (fetched from DB)
+        user.setEmail(studentDto.getEmail());
+        if (studentDto.getPassword() != null && !studentDto.getPassword().isBlank()) {
+            user.setPassword(studentDto.getPassword());
+        }
+        if (studentDto.getRole() != null) {
+            user.setRole(studentDto.getRole());
+        }
+        return user;
+    }
+
+    public User updateUser(RecruiterDto studentDto, Recruiter student) {
         User user = userRepository.findById(student.getUser().getId())
                 .orElseThrow(() -> new RuntimeException("User not found")); // This is already managed (fetched from DB)
         user.setEmail(studentDto.getEmail());

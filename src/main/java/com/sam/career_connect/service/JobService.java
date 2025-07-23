@@ -15,7 +15,7 @@ public class JobService {
     private JobRepository jobRepository;
 
     public List<Job> getAllJobs() {
-        return jobRepository.findAll();
+        return jobRepository.findAllByVisibleTrueAndActiveTrue();
     }
 
     public List<Job> searchJobs(String keyword) {
@@ -30,6 +30,18 @@ public class JobService {
 
     public void addJob(Job job, Recruiter recruiter) {
         job.setRecruiter(recruiter);
+        jobRepository.save(job);
+    }
+
+    public void makeJobInvisible(Long jobId) {
+       Job job =  jobRepository.getById(jobId);
+       job.setVisible(false);
+       jobRepository.save(job);
+    }
+
+    public void makeJobDeactivate(Long jobId) {
+        Job job =  jobRepository.getById(jobId);
+        job.setActive(false);
         jobRepository.save(job);
     }
 }

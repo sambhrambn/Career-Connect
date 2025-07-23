@@ -7,42 +7,91 @@
   <title>Admin - Manage Users</title>
   <style>
     :root {
-      --primary: #003366;
-      --accent: #007bff;
-      --danger: #dc3545;
+      --charcoal: #2c2c2c;
+      --skyblue: #4aa3df;
+      --softwhite: #f5f5f5;
+      --hoverblue: #76c7ff;
       --success: #28a745;
+      --danger: #dc3545;
       --warning: #ffc107;
-      --bg: #f9fafc;
-      --table-header: #e6f0ff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background-color: var(--bg);
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+      color: var(--softwhite);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      z-index: 0;
     }
 
     header {
-      background-color: var(--primary);
-      color: white;
-      padding: 20px 30px;
+      position: relative;
+      z-index: 2;
+      background-color: var(--charcoal);
+      color: var(--skyblue); /* changed from white to skyblue */
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     header h1 {
-      font-size: 22px;
+      font-size: 1.5rem;
+    }
+
+    .header-buttons a {
+      margin-left: 1rem;
+      text-decoration: none;
+      background-color: var(--skyblue);
+      color: var(--charcoal);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .header-buttons a:hover {
+      background-color: var(--hoverblue);
     }
 
     .container {
-      padding: 30px;
+      position: relative;
+      z-index: 1;
+      margin-top: 30px; /* added gap below header */
+      padding: 2rem;
+      max-width: 95%;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      border: 1px solid var(--skyblue);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     .section-title {
-      font-size: 24px;
-      color: var(--primary);
-      margin-bottom: 20px;
-    }
-
-    .search-bar {
+      font-size: 1.5rem;
+      color: var(--skyblue);
       margin-bottom: 20px;
     }
 
@@ -51,29 +100,32 @@
       max-width: 100%;
       padding: 10px;
       border-radius: 5px;
-      border: 1px solid #ccc;
+      border: none;
+      background-color: #eee;
+      color: #000;
+      margin-bottom: 20px;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      background: white;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      background-color: rgba(255, 255, 255, 0.06);
+      color: var(--softwhite);
     }
 
     th, td {
       padding: 12px 15px;
-      border: 1px solid #ddd;
+      border: 1px solid #aaa;
       text-align: left;
     }
 
     th {
-      background-color: var(--table-header);
-      color: var(--primary);
+      background-color: rgba(74, 163, 223, 0.2);
+      color: var(--skyblue);
     }
 
     tr:nth-child(even) {
-      background-color: #fafafa;
+      background-color: rgba(255, 255, 255, 0.05);
     }
 
     .actions a {
@@ -82,13 +134,14 @@
       margin-right: 6px;
       border-radius: 5px;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: bold;
       color: white;
+      display: inline-block;
     }
 
     .approve-btn { background-color: var(--success); }
     .reject-btn  { background-color: var(--danger); }
-    .view-btn    { background-color: var(--accent); }
+    .view-btn    { background-color: var(--skyblue); color: var(--charcoal); }
 
     .status-pill {
       padding: 5px 10px;
@@ -126,7 +179,7 @@
         left: 15px;
         top: 12px;
         font-weight: bold;
-        color: var(--primary);
+        color: var(--skyblue);
       }
     }
   </style>
@@ -135,6 +188,10 @@
 
 <header>
   <h1>Career Connect Admin | Manage Users</h1>
+  <div class="header-buttons">
+    <a href="/admin/dashboard">🔙 Back</a>
+    <a href="/logout">🚪 Logout</a>
+  </div>
 </header>
 
 <div class="container">

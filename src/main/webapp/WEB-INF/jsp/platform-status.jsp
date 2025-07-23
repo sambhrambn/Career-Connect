@@ -7,39 +7,98 @@
   <title>Detailed Platform Status - Admin Panel</title>
   <style>
     :root {
-      --primary: #003366;
-      --accent: #007bff;
-      --success: #28a745;
+      --charcoal: #2c2c2c;
+      --skyblue: #4aa3df;
+      --hoverblue: #76c7ff;
+      --softwhite: #f5f5f5;
       --danger: #dc3545;
-      --info: #17a2b8;
-      --light: #f8f9fa;
-      --dark: #343a40;
+      --success: #28a745;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--light);
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+      color: var(--softwhite);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      z-index: 0;
     }
 
     header {
-      background-color: var(--primary);
-      color: white;
+      background-color: var(--charcoal);
       padding: 20px 30px;
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--skyblue);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 2;
     }
 
-    header h1 {
-      font-size: 22px;
+    .header-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .header-buttons a {
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-back {
+      background-color: var(--skyblue);
+      color: var(--charcoal);
+    }
+
+    .btn-back:hover {
+      background-color: var(--hoverblue);
+    }
+
+    .btn-logout {
+      background-color: var(--danger);
+      color: white;
+    }
+
+    .btn-logout:hover {
+      background-color: #c82333;
     }
 
     .container {
       padding: 30px;
+      position: relative;
+      z-index: 2;
     }
 
     .title {
       font-size: 24px;
       margin-bottom: 25px;
-      color: var(--primary);
+      color: var(--skyblue);
     }
 
     .cards {
@@ -52,23 +111,23 @@
     .card {
       flex: 1;
       min-width: 200px;
-      background: white;
+      background: rgba(255,255,255,0.08);
       padding: 20px;
-      border-left: 5px solid var(--accent);
+      border-left: 5px solid var(--skyblue);
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
     .card h2 {
       font-size: 18px;
-      color: var(--dark);
+      color: var(--softwhite);
       margin-bottom: 10px;
     }
 
     .card p {
       font-size: 22px;
       font-weight: bold;
-      color: var(--primary);
+      color: var(--skyblue);
     }
 
     .search-bar {
@@ -80,29 +139,31 @@
       padding: 10px;
       font-size: 14px;
       border-radius: 6px;
-      border: 1px solid #ccc;
+      border: none;
+      background-color: #eee;
+      color: #000;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      background-color: white;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      background-color: rgba(255,255,255,0.08);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
 
     th, td {
       padding: 12px 15px;
       text-align: left;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid #888;
     }
 
     th {
-      background-color: #e9f1ff;
-      color: var(--primary);
+      background-color: rgba(255,255,255,0.1);
+      color: var(--skyblue);
     }
 
     tr:nth-child(even) {
-      background-color: #f9f9f9;
+      background-color: rgba(255,255,255,0.05);
     }
 
     .chip {
@@ -126,13 +187,22 @@
       .cards {
         flex-direction: column;
       }
+
+      .header-buttons {
+        flex-direction: column;
+        align-items: flex-end;
+      }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Career Connect Admin | Platform Status</h1>
+  <div>Career Connect Admin | Platform Status</div>
+  <div class="header-buttons">
+    <a href="/admin/dashboard" class="btn-back">⬅ Back</a>
+    <a href="/logout" class="btn-logout">Logout</a>
+  </div>
 </header>
 
 <div class="container">

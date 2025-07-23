@@ -32,6 +32,9 @@ public class Student {
     @Column(name = "last_name", nullable = false, length = 50)
     private String lastName;
 
+
+    private LocalDate createdAt;
+
     @NotNull
     @Past
     @Column(nullable = false)
@@ -71,9 +74,6 @@ public class Student {
     @OneToOne( mappedBy = "student",cascade = CascadeType.ALL)
     private Resume resume;
 
-    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
-    private Experience experience;
-
     @OneToMany(mappedBy = "student",cascade = CascadeType.ALL, orphanRemoval = true )
     private List<Application> applications;
 
@@ -86,7 +86,7 @@ public class Student {
     public Student() {
     }
 
-    public Student(Long id, String firstName, String lastName, LocalDate dob, Gender gender, List<String> skills, String address, String imagePath, User user, Resume resume, Experience experience, List<Application> applications, List<Bookmark> bookmarks, List<Education> educations) {
+    public Student(Long id, String firstName, String lastName, LocalDate dob, Gender gender, List<String> skills, String address, String imagePath, User user, Resume resume, List<Application> applications, List<Bookmark> bookmarks, List<Education> educations) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -97,7 +97,6 @@ public class Student {
         this.imagePath = imagePath;
         this.user = user;
         this.resume = resume;
-        this.experience = experience;
         this.applications = applications;
         this.bookmarks = bookmarks;
         this.educations = educations;
@@ -163,6 +162,8 @@ public class Student {
         return imagePath;
     }
 
+
+
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
@@ -181,14 +182,6 @@ public class Student {
 
     public void setResume(Resume resume) {
         this.resume = resume;
-    }
-
-    public Experience getExperience() {
-        return experience;
-    }
-
-    public void setExperience(Experience experience) {
-        this.experience = experience;
     }
 
     public List<Application> getApplications() {
@@ -229,6 +222,14 @@ public class Student {
 
     public void setObjective(String objective) {
         this.objective = objective;
+    }
+
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
     }
 
     @Override

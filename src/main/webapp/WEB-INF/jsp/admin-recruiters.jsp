@@ -7,43 +7,103 @@
     <title>Admin - View All Recruiters</title>
     <style>
         :root {
-            --primary: #003366;
-            --accent: #007bff;
+            --charcoal: #2c2c2c;
+            --skyblue: #4aa3df;
+            --softwhite: #f5f5f5;
+            --hoverblue: #76c7ff;
             --danger: #dc3545;
             --success: #28a745;
-            --bg: #f4f6f9;
-            --text: #333;
-            --table-header: #e6f0ff;
+            --warning: #ffc107;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Segoe UI', sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: var(--bg);
-            margin: 0;
+            background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 0;
         }
 
         header {
-            background-color: var(--primary);
-            color: white;
-            padding: 20px 30px;
+            position: relative;
+            z-index: 2;
+            background-color: var(--charcoal);
+            color: var(--softwhite);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        header h1 {
-            font-size: 22px;
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            background-color: var(--skyblue);
+            color: var(--charcoal);
+            font-weight: bold;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+        }
+
+        .back-btn:hover {
+            background-color: var(--hoverblue);
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--skyblue);
+        }
+
+        .logout-btn {
+            text-decoration: none;
+            background-color: var(--danger);
+            color: white;
+            padding: 0.4rem 0.9rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
         }
 
         .container {
-            padding: 30px;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+            color: var(--softwhite);
         }
 
         .section-title {
             margin-bottom: 20px;
             font-size: 24px;
-            color: var(--primary);
-        }
-
-        .search-bar {
-            margin-bottom: 20px;
+            color: var(--skyblue);
         }
 
         .search-bar input[type="text"] {
@@ -57,23 +117,25 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin-top: 20px;
+            color: var(--softwhite);
         }
 
         th, td {
             padding: 12px 15px;
-            border: 1px solid #ddd;
+            border: 1px solid rgba(255,255,255,0.2);
             text-align: left;
         }
 
         th {
-            background-color: var(--table-header);
-            color: var(--primary);
+            background-color: rgba(74, 163, 223, 0.2);
+            color: var(--skyblue);
         }
 
         tr:nth-child(even) {
-            background-color: #fafafa;
+            background-color: rgba(255,255,255,0.05);
         }
 
         .actions a {
@@ -88,7 +150,7 @@
 
         .approve-btn { background-color: var(--success); }
         .reject-btn  { background-color: var(--danger); }
-        .view-btn    { background-color: var(--accent); }
+        .view-btn    { background-color: var(--skyblue); }
 
         .status-pill {
             padding: 5px 10px;
@@ -99,7 +161,7 @@
         }
 
         .approved { background-color: var(--success); }
-        .pending  { background-color: #ffc107; color: #333; }
+        .pending  { background-color: var(--warning); color: #000; }
         .rejected { background-color: var(--danger); }
 
         @media (max-width: 768px) {
@@ -126,7 +188,7 @@
                 left: 15px;
                 top: 12px;
                 font-weight: bold;
-                color: var(--primary);
+                color: var(--skyblue);
             }
         }
     </style>
@@ -134,11 +196,14 @@
 <body>
 
 <header>
-    <h1>Career Connect Admin | View All Recruiters</h1>
+    <div class="header-left">
+        <a href="/admin/dashboard" class="back-btn">← Back</a>
+        <div class="logo-text">Career Connect</div>
+    </div>
+    <a href="/logout" class="logout-btn">Logout</a>
 </header>
 
 <div class="container">
-
     <div class="section-title">All Registered Recruiters</div>
 
     <div class="search-bar">
@@ -147,39 +212,34 @@
 
     <table id="recruiterTable">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Company Name</th>
-                <th>Recruiter Name</th>
-                <th>Email</th>
-                <th>Status</th>
-                <th>Joined</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>ID</th>
+            <th>Company Name</th>
+            <th>Recruiter Name</th>
+            <th>Email</th>
+            <th>Designation</th>
+            <th>Joined</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
-            <c:forEach var="recruiter" items="${recruiters}">
-                <tr>
-                    <td data-label="ID">${recruiter.id}</td>
-                    <td data-label="Company Name">${recruiter.companyName}</td>
-                    <td data-label="Recruiter Name">${recruiter.recruiterName}</td>
-                    <td data-label="Email">${recruiter.email}</td>
-                    <td data-label="Status">
-                        <span class="status-pill ${recruiter.status}">
-                            ${recruiter.status}
-                        </span>
-                    </td>
-                    <td data-label="Joined">${recruiter.createdAt}</td>
-                    <td data-label="Actions" class="actions">
-                        <a class="approve-btn" href="/admin/recruiters/${recruiter.id}/approve">Approve</a>
-                        <a class="reject-btn" href="/admin/recruiters/${recruiter.id}/reject">Reject</a>
-                        <a class="view-btn" href="/admin/recruiters/${recruiter.id}">View</a>
-                    </td>
-                </tr>
-            </c:forEach>
+        <c:forEach var="recruiter" items="${recruiters}">
+            <tr>
+                <td data-label="ID">${recruiter.id}</td>
+                <td data-label="Company Name">${recruiter.companyName}</td>
+                <td data-label="Recruiter Name">${recruiter.firstName} ${recruiter.lastName}</td>
+                <td data-label="Email">${recruiter.user.email}</td>
+                <td data-label="Designation">${recruiter.designation}</td>
+                <td data-label="Joined">${recruiter.createdAt}</td>
+                <td data-label="Actions" class="actions">
+                    <a class="approve-btn" href="/admin/recruiters/${recruiter.id}/approve">Approve</a>
+                    <a class="reject-btn" href="/admin/recruiters/${recruiter.id}/reject">Reject</a>
+                    <a class="view-btn" href="/admin/recruiters/${recruiter.id}">View</a>
+                </td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
-
 </div>
 
 <script>

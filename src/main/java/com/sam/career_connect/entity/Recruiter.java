@@ -63,9 +63,14 @@ public class Recruiter {
     @Column(nullable = false)
     private String imagePath;
 
+    private LocalDate createdAt;
+
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @OneToMany(mappedBy = "recruiter", cascade = CascadeType.ALL , orphanRemoval = true)
+    private List<Experience> experiences;
 
     @OneToMany(mappedBy = "recruiter", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Job> jobs;
@@ -152,6 +157,22 @@ public class Recruiter {
 
     public String getDesignation() {
         return designation;
+    }
+
+    public List<Experience> getExperiences() {
+        return experiences;
+    }
+
+    public void setExperiences(List<Experience> experiences) {
+        this.experiences = experiences;
+    }
+
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
     }
 
     @Override

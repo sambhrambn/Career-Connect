@@ -241,8 +241,8 @@
         <p><strong>Workmode:</strong> ${job.workMode}</p>
         <p><strong>Type:</strong> ${job.jobType}</p>
         <div class="job-buttons">
-          <a href="/recruiter/jobs/${job.id}/toggleVisibility" class="invisible-btn">Make Invisible</a>
-          <a href="/recruiter/jobs/${job.id}/deactivate" class="deactivate-btn">Deactivate</a>
+          <a href="/recruiter/job-invisible/${job.id}" class="invisible-btn">Make Invisible</a>
+          <a href="/recruiter/job-deactivate/${job.id}" class="deactivate-btn">Deactivate</a>
         </div>
       </div>
     </c:forEach>

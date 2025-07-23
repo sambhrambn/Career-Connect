@@ -7,39 +7,85 @@
   <title>Admin - View All Jobs</title>
   <style>
     :root {
-      --primary: #003366;
-      --accent: #007bff;
+      --charcoal: #2c2c2c;
+      --skyblue: #4aa3df;
+      --hoverblue: #76c7ff;
+      --softwhite: #f5f5f5;
       --danger: #dc3545;
       --success: #28a745;
-      --bg: #f4f6f9;
-      --text: #333;
-      --table-header: #e6f0ff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg);
-      margin: 0;
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      z-index: 0;
     }
 
     header {
-      background-color: var(--primary);
-      color: white;
-      padding: 20px 30px;
+      position: relative;
+      z-index: 2;
+      background-color: var(--charcoal);
+      color: var(--softwhite);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    header h1 {
-      font-size: 22px;
+    .header-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--skyblue);
+    }
+
+    .header-buttons a {
+      text-decoration: none;
+      background-color: var(--skyblue);
+      color: var(--charcoal);
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      margin-left: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .header-buttons a:hover {
+      background-color: var(--hoverblue);
     }
 
     .container {
+      position: relative;
+      z-index: 1;
       padding: 30px;
+      color: var(--softwhite);
     }
 
     .section-title {
       margin-bottom: 20px;
       font-size: 24px;
-      color: var(--primary);
+      color: var(--skyblue);
     }
 
     .search-bar {
@@ -51,29 +97,32 @@
       width: 350px;
       max-width: 100%;
       border-radius: 5px;
-      border: 1px solid #ccc;
+      border: none;
+      outline: none;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      background-color: white;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--skyblue);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      color: var(--softwhite);
     }
 
     th, td {
       padding: 12px 15px;
-      border: 1px solid #ddd;
+      border: 1px solid rgba(255,255,255,0.2);
       text-align: left;
     }
 
     th {
-      background-color: var(--table-header);
-      color: var(--primary);
+      background-color: rgba(74, 163, 223, 0.2);
+      color: var(--skyblue);
     }
 
     tr:nth-child(even) {
-      background-color: #fafafa;
+      background-color: rgba(255,255,255,0.03);
     }
 
     .actions a {
@@ -87,7 +136,7 @@
     }
 
     .view-btn {
-      background-color: var(--accent);
+      background-color: var(--skyblue);
     }
 
     .toggle-btn {
@@ -138,7 +187,7 @@
         left: 15px;
         top: 12px;
         font-weight: bold;
-        color: var(--primary);
+        color: var(--skyblue);
       }
     }
   </style>
@@ -146,7 +195,11 @@
 <body>
 
 <header>
-  <h1>Career Connect Admin | View All Jobs</h1>
+  <div class="header-title">Career Connect Admin | View All Jobs</div>
+  <div class="header-buttons">
+    <a href="/admin/home">⬅ Back</a>
+    <a href="/logout">🚪 Logout</a>
+  </div>
 </header>
 
 <div class="container">
@@ -175,20 +228,20 @@
         <tr>
           <td data-label="ID">${job.id}</td>
           <td data-label="Title">${job.jobTitle}</td>
-          <td data-label="Recruiter">${job.recruiterName}</td>
+          <td data-label="Recruiter">${job.recruiter.firstName} ${job.recruiter.lastName}</td>
           <td data-label="Location">${job.jobLocation}</td>
           <td data-label="Type">${job.jobType}</td>
           <td data-label="Status">
-            <span class="status-pill ${job.isActive ? 'active' : 'inactive'}">
-              ${job.isActive ? 'Active' : 'Inactive'}
+            <span class="status-pill ${job.active ? 'active' : 'inactive'}">
+              ${job.active ? 'Active' : 'Inactive'}
             </span>
           </td>
           <td data-label="Posted">${job.postedAt}</td>
           <td data-label="Actions" class="actions">
             <a class="view-btn" href="/admin/jobs/${job.id}">View</a>
-            <a class="${job.isActive ? 'deactivate-btn' : 'toggle-btn'}"
+            <a class="${job.active ? 'deactivate-btn' : 'toggle-btn'}"
                href="/admin/jobs/${job.id}/toggle">
-              ${job.isActive ? 'Deactivate' : 'Activate'}
+              ${job.active ? 'Deactivate' : 'Activate'}
             </a>
           </td>
         </tr>
