@@ -76,18 +76,11 @@
     }
 
     .container {
-      position: relative;
-      z-index: 1;
-      margin-top: 30px; /* added gap below header */
-      padding: 2rem;
-      max-width: 95%;
-      margin-left: auto;
-      margin-right: auto;
-      background-color: rgba(255, 255, 255, 0.08);
-      border-radius: 10px;
-      border: 1px solid var(--skyblue);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+            color: var(--softwhite);
+        }
 
     .section-title {
       font-size: 1.5rem;
@@ -218,15 +211,49 @@
       <c:forEach var="user" items="${users}">
         <tr>
           <td data-label="ID">${user.id}</td>
-          <td data-label="Full Name">${user.firstName} ${user.lastName}</td>
+          <td data-label="Full Name">
+            <c:choose>
+              <c:when test="${user.role == 'RECRUITER'}">
+                ${user.recruiter.firstName} ${user.recruiter.lastName}
+              </c:when>
+              <c:when test="${user.role == 'STUDENT'}">
+                ${user.student.firstName} ${user.student.lastName}
+              </c:when>
+              <c:otherwise>
+                ${user.firstName} ${user.lastName}
+              </c:otherwise>
+            </c:choose>
+          </td>
           <td data-label="Email">${user.email}</td>
           <td data-label="Role">${user.role}</td>
           <td data-label="Status">
-            <span class="status-pill ${user.status}">
-              ${user.status}
-            </span>
+            <c:choose>
+              <c:when test="${user.blocked}">
+                <span class="status-pill blocked">Blocked</span>
+              </c:when>
+              <c:when test="${user.approved}">
+                <span class="status-pill approved">Approved</span>
+              </c:when>
+              <c:otherwise>
+                <span class="status-pill pending">Pending</span>
+              </c:otherwise>
+            </c:choose>
           </td>
-          <td data-label="Registered">${user.registeredAt}</td>
+
+          <td data-label="Registered">
+                      <c:choose>
+                        <c:when test="${user.role == 'RECRUITER'}">
+                          ${user.recruiter.createdAt}
+                        </c:when>
+                        <c:when test="${user.role == 'STUDENT'}">
+                          ${user.student..createdAt}
+                        </c:when>
+                        <c:otherwise>
+                          ${user.firstName} ${user.lastName}
+                        </c:otherwise>
+                      </c:choose>
+          </td>
+
           <td data-label="Actions" class="actions">
             <a class="approve-btn" href="/admin/users/${user.id}/approve">Approve</a>
             <a class="reject-btn" href="/admin/users/${user.id}/reject">Reject</a>
