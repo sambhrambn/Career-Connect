@@ -1,13 +1,7 @@
 package com.sam.career_connect.controller;
 
-import com.sam.career_connect.entity.Job;
-import com.sam.career_connect.entity.Recruiter;
-import com.sam.career_connect.entity.Student;
-import com.sam.career_connect.entity.User;
-import com.sam.career_connect.repository.JobRepository;
-import com.sam.career_connect.repository.RecruiterRepository;
-import com.sam.career_connect.repository.StudentRepository;
-import com.sam.career_connect.repository.UserRepository;
+import com.sam.career_connect.entity.*;
+import com.sam.career_connect.repository.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -41,6 +35,10 @@ public class AdminController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ApplicationRepository applicationRepository;
+
 
     @GetMapping("/login")
     public String adminLoginForm(){
@@ -93,6 +91,19 @@ public class AdminController {
         model.addAttribute("jobs", jobs);
         return "jobs-toggle";
     }
+    @GetMapping("/status")
+    public String jobsStatus(Model model){
+        List<Job> jobs= jobRepository.findAll();
+        List<Application> applications=applicationRepository.findAll();
+        model.addAttribute("jobs", jobs);
+        model.addAttribute("applications",applications);
+        model.addAttribute("studentCount",studentRepository.count());
+        model.addAttribute("recruiterCount",recruiterRepository.count());
+        model.addAttribute("jobCount",jobRepository.count());
+        model.addAttribute("applicationCount",applicationRepository.count());
+        return "platform-status";
+    }
+
 
 
 }
