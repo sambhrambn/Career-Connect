@@ -228,10 +228,10 @@
           <td data-label="Role">${user.role}</td>
           <td data-label="Status">
             <c:choose>
-              <c:when test="${user.blocked}">
+              <c:when test="${user.isBlocked}">
                 <span class="status-pill blocked">Blocked</span>
               </c:when>
-              <c:when test="${user.approved}">
+              <c:when test="${user.isApproved}">
                 <span class="status-pill approved">Approved</span>
               </c:when>
               <c:otherwise>

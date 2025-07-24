@@ -233,7 +233,7 @@
                 <td data-label="Joined">${recruiter.createdAt}</td>
                 <td data-label="Actions" class="actions">
                     <a class="view-btn" href="/recruiter/profile-view/${recruiter.id}">View</a>
-                    <a class="reject-btn" href="/admin/deactivate/${recruiter.id}"
+                    <a class="reject-btn" href="/admin/deactivate-recruiter/${recruiter.id}"
                         onclick="return confirm('Are you sure you want to deactivate this student?');">Deactivate</a>
                 </td>
             </tr>

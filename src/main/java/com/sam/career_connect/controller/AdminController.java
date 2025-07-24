@@ -63,6 +63,7 @@ public class AdminController {
         if (email.equals(adminEmail) && password.equals(adminPassword)) {
             model.addAttribute("totalStudents", studentRepository.count());
             model.addAttribute("totalRecruiters", recruiterRepository.count());
+            model.addAttribute("totalJobs", jobRepository.count());
             List<User> recentUsers = userRepository.findTop5ByIsApprovedFalseOrderByIdDesc();
             List<Job> recentJobs = jobRepository.findTop5ByOrderByIdDesc();
             if(recentJobs!=null){
@@ -133,7 +134,7 @@ public class AdminController {
         return "admin-students";
     }
 
-    @GetMapping("/deactivate/{id}")
+    @GetMapping("/deactivate-recruiter/{id}")
     public String deactivateRecruiter(@PathVariable("id") Long id, Model model){
         recruiterService.deactivateRecruiter(id);
         List<Recruiter> recruiters= recruiterRepository.findAllByUserIsBlockedFalse();
