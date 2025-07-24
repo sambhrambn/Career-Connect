@@ -250,7 +250,7 @@
 
 <header>
     <div class="logo">Campus Career Portal</div>
-
+    <a href="/home/dashboard2" class="back-btn">← Back</a>
 </header>
 
 <section class="profile-container">

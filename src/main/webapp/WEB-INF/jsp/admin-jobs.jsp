@@ -197,7 +197,7 @@
 <header>
   <div class="header-title">Career Connect Admin | View All Jobs</div>
   <div class="header-buttons">
-    <a href="/admin/dashboard">⬅ Back</a>
+    <a href="/home/dashboard2">⬅ Back</a>
     <a href="/admin/logout">🚪 Logout</a>
   </div>
 </header>

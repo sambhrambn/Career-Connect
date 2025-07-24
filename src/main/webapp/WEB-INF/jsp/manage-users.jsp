@@ -182,7 +182,7 @@
 <header>
   <h1>Career Connect Admin | Manage Users</h1>
   <div class="header-buttons">
-    <a href="/admin/dashboard">🔙 Back</a>
+    <a href="/home/dashboard2">🔙 Back</a>
     <a href="/admin/logout">🚪 Logout</a>
   </div>
 </header>

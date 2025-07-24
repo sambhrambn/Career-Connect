@@ -222,7 +222,7 @@
 
 <header>
     <div class="header-left">
-        <a href="/admin/dashboard" class="back-btn">← Back</a>
+        <a href="/home/dashboard2" class="back-btn">← Back</a>
         <h1>Career Connect Admin | View All Students</h1>
     </div>
     <div class="header-right">

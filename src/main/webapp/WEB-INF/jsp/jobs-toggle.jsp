@@ -212,7 +212,7 @@
 <header>
   <h1>Career Connect Admin | Toggle Job Visibility</h1>
   <div class="header-buttons">
-    <a href="/admin/dashboard" class="back-btn">Back</a>
+    <a href="/home/dashboard2" class="back-btn">Back</a>
     <a href="/admin/logout" class="logout-btn">Logout</a>
   </div>
 </header>

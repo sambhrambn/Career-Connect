@@ -80,28 +80,6 @@ public class AdminController {
         }
     }
 
-    @PostMapping("/dashboard2")
-    public String adminDashboard2(@RequestParam("email") String email, @RequestParam("password") String password, Model model){
-        if (email.equals(adminEmail) && password.equals(adminPassword)) {
-            model.addAttribute("totalStudents", studentRepository.count());
-            model.addAttribute("totalRecruiters", recruiterRepository.count());
-            model.addAttribute("totalJobs", jobRepository.count());
-            List<User> recentUsers = userRepository.findTop5ByIsApprovedFalseOrderByIdDesc();
-            List<Job> recentJobs = jobRepository.findTop5ByOrderByIdDesc();
-            if(recentJobs!=null){
-                model.addAttribute("recentJobs", recentJobs);
-            }
-
-            if(recentUsers!= null){
-                model.addAttribute("recentUsers", recentUsers);
-            }
-            return "admin-dashboard";
-        } else {
-            model.addAttribute("error", "invalid email or password");
-            return "admin-login";
-        }
-    }
-
     @GetMapping("/students")
     public String adminStudents(Model model){
         List<Student> students= studentRepository.findAllByUserIsBlockedFalse();

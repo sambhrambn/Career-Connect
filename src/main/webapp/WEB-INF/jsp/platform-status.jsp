@@ -200,7 +200,7 @@
 <header>
   <div>Career Connect Admin | Platform Status</div>
   <div class="header-buttons">
-    <a href="/admin/dashboard" class="btn-back">⬅ Back</a>
+    <a href="/home/dashboard2" class="btn-back">⬅ Back</a>
     <a href="/admin/logout" class="btn-logout">Logout</a>
   </div>
 </header>
