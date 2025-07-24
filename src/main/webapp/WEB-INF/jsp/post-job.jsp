@@ -222,8 +222,8 @@
   <div class="logo">Campus Career Portal</div>
   <nav>
 
-    <a href="/Application">Back</a>
-    <a href="/logout">Logout</a>
+    <a href="/recruiter/dashboard2">Back</a>
+    <a href="/recruiter/logout">Logout</a>
   </nav>
 </header>
 

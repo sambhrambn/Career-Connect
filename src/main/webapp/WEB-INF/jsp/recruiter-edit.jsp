@@ -339,9 +339,8 @@
 <header>
     <div class="logo">Campus Career Portal</div>
     <nav>
-        <a href="#">Home</a>
-        <a href="#">Login</a>
-        <a href="#">Register</a>
+        <a href="/recruiter/profile">Back</a>
+        <a href="/recruiter/logout">Logout</a>
     </nav>
 </header>
 
@@ -406,7 +405,7 @@
                 <label for="imageFile">Upload Profile Image:</label>
                 <form:input path="imageFile" id="imageFile" type="file" accept="image/*" />
 
-                <button type="submit">Register</button>
+                <button type="submit">Update</button>
             </form:form>
         </div>
     </div>

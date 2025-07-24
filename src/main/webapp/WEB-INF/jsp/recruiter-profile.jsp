@@ -251,7 +251,7 @@
 <header>
     <div class="logo">Campus Career Portal</div>
     <nav>
-        <a href="/recruiter/dashboard">Dashboard</a>
+        <a href="/recruiter/dashboard2">Back</a>
         <a href="/recruiter/logout">Logout</a>
     </nav>
 </header>
@@ -295,7 +295,7 @@
             <form:input path="jobTitle" placeholder="Job Title" required="true" />
             <form:input path="yoe" type="number" step="0.1" min="0" placeholder="Years of Experience" required="true" />
             <form:textarea path="description" placeholder="Describe your role or projects" required="true" rows="4"/>
-            <button type="submit">Save</button>
+            <button type="submit">Submit</button>
         </form:form>
     </div>
 

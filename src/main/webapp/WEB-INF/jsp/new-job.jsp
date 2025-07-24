@@ -218,7 +218,7 @@
 <header>
     <div class="logo">Campus Career Portal</div>
     <div class="header-actions">
-        <a href="/recruiter/dashboard">🏠 Dashboard</a>
+        <a href="/recruiter/dashboard2">🏠 Dashboard</a>
     </div>
 </header>
 

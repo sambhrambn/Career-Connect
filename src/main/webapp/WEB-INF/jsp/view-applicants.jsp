@@ -226,11 +226,9 @@
 <header>
   <div class="logo">Campus Career Portal</div>
   <nav>
-    <a href="/Post Job">Post Jobs</a>
-    <a href="/Application">Application</a>
-    <a href="/Messages">Messages</a>
-    <a href="/Settings">Settings</a>
-    <a href="/logout">Logout</a>
+    <a href="/recruiter/dashboard2">Back</a>
+    <a href="/recruiter/post-Jobs">Posted Jobs</a>
+    <a href="/recruiter/logout">Logout</a>
   </nav>
 </header>
 

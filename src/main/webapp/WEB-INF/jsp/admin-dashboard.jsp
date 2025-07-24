@@ -195,7 +195,6 @@
 <header>
     <h1>Campus Career Portal | Admin Dashboard</h1>
     <nav>
-        <a href="/admin/home">Home</a>
         <a href="/admin/students">Students</a>
         <a href="/admin/recruiters">Recruiters</a>
         <a href="/admin/jobs">Jobs</a>

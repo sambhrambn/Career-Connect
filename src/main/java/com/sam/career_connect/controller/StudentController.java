@@ -84,7 +84,7 @@ public class StudentController {
 
             return "student-dashboard";
         } else{
-            model.addAttribute("error", "invalid email or password");
+            model.addAttribute("error", "invalid email or password or approval pending");
             return "student-login";
         }
     }
