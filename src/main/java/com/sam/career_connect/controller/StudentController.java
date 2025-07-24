@@ -291,6 +291,16 @@ public class StudentController {
 
     }
 
+    @GetMapping("/profile/{id}")
+    public String profile(@PathVariable("id") Long studentId, HttpSession session,Model model){
+        Education education = new Education();
+        model.addAttribute("education", education);
+        model.addAttribute("student", studentService.getStudent(studentId));
+        model.addAttribute("user", studentService.getStudent(studentId).getUser());
+        model.addAttribute("educationLevels", Arrays.asList(EducationLevel.values()));
+        return "student-profile3";
+    }
+
 }
 
 

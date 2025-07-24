@@ -201,4 +201,12 @@ public class RecruiterController {
         return "recruiter-profile";
     }
 
+    @GetMapping("/profile-view/{id}")
+    public String recruiterProfileView(@PathVariable("id") Long recruiterId, HttpSession session,Model model){
+        Experience experience = new Experience();
+        model.addAttribute("experience", experience);
+        model.addAttribute("recruiter", recruiterService.getRecruiter(recruiterId));
+        return "recruiter-profile2";
+    }
+
 }

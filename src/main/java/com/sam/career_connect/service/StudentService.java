@@ -104,7 +104,7 @@ public class StudentService {
         if(user==null){
             return null;
         }
-        else if(user.getRole().equals(Role.STUDENT)){
+        else if((user.getRole().equals(Role.STUDENT)) && !(user.getIsBlocked())){
             return user.getStudent();
         }
        return null;
@@ -140,5 +140,11 @@ public class StudentService {
             e.printStackTrace();
         }
         studentRepository.save(student);
+    }
+
+    public void deactivateStudent(Long id) {
+       User user = getStudent(id).getUser();
+       user.setIsBlocked(true);
+        userRepository.save(user);
     }
 }

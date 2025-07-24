@@ -261,8 +261,8 @@
                     <td data-label="Skills">${student.skills}</td>
                     <td data-label="Registered On">${student.createdAt}</td>
                     <td data-label="Actions" class="actions">
-                        <a class="view-btn" href="/admin/students/${student.id}">View</a>
-                        <a class="deactivate-btn" href="/admin/students/${student.id}/deactivate"
+                        <a class="view-btn" href="/student/profile/${student.id}">View</a>
+                        <a class="deactivate-btn" href="/admin/deactivate/${student.id}"
                            onclick="return confirm('Are you sure you want to deactivate this student?');">Deactivate</a>
                     </td>
                 </tr>

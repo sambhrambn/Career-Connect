@@ -232,9 +232,9 @@
                 <td data-label="Designation">${recruiter.designation}</td>
                 <td data-label="Joined">${recruiter.createdAt}</td>
                 <td data-label="Actions" class="actions">
-                    <a class="approve-btn" href="/admin/recruiters/${recruiter.id}/approve">Approve</a>
-                    <a class="reject-btn" href="/admin/recruiters/${recruiter.id}/reject">Reject</a>
-                    <a class="view-btn" href="/admin/recruiters/${recruiter.id}">View</a>
+                    <a class="view-btn" href="/recruiter/profile-view/${recruiter.id}">View</a>
+                    <a class="reject-btn" href="/admin/deactivate/${recruiter.id}"
+                        onclick="return confirm('Are you sure you want to deactivate this student?');">Deactivate</a>
                 </td>
             </tr>
         </c:forEach>

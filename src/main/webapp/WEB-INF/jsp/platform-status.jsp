@@ -248,11 +248,11 @@
         <tr>
           <td data-label="Job Title">${job.jobTitle}</td>
           <td data-label="Posted By">${job.recruiter.firstName} ${job.recruiter.lastName}</td>
-          <td data-label="Applications">${job.applicationCount}</td>
+          <td data-label="Applications">${job.applications.size()}</td>
           <td data-label="Limit">${job.maxApplications}</td>
           <td data-label="Visibility">
-            <span class="chip ${job.isVisible ? 'visible' : 'hidden'}">
-              ${job.isVisible ? 'Visible' : 'Hidden'}
+            <span class="chip ${job.visible ? 'visible' : 'hidden'}">
+              ${job.visible ? 'Visible' : 'Hidden'}
             </span>
           </td>
         </tr>

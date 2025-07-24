@@ -152,4 +152,10 @@ public class RecruiterService {
         recruiterRepository.save(student);
 
     }
+
+    public void deactivateRecruiter(Long id) {
+        User user = getRecruiter(id).getUser();
+        user.setIsBlocked(true);
+        userRepository.save(user);
+    }
 }

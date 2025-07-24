@@ -229,7 +229,7 @@
             <a href="/admin/jobs">View All Jobs</a>
             <a href="/admin/users">Manage Users</a>
             <a href="/admin/toggle">Toggle Job Visibility</a>
-            <a href="/admin/stats">View Detailed Stats</a>
+            <a href="/admin/status">View Detailed Stats</a>
         </div>
     </div>
 
@@ -250,9 +250,29 @@
                     <tr>
                         <td>${user.id}</td>
                         <td>${user.role}</td>
-                        <td>${user.firstName} ${user.lastName}</td>
+                        <td><c:choose>
+                                          <c:when test="${user.role == 'RECRUITER'}">
+                                            ${user.recruiter.firstName} ${user.recruiter.lastName}
+                                          </c:when>
+                                          <c:when test="${user.role == 'STUDENT'}">
+                                            ${user.student.firstName} ${user.student.lastName}
+                                          </c:when>
+                                          <c:otherwise>
+                                            ${user.firstName} ${user.lastName}
+                                          </c:otherwise>
+                                        </c:choose></td>
                         <td>${user.email}</td>
-                        <td>${user.createdAt}</td>
+                        <td><c:choose>
+                                                    <c:when test="${user.role == 'RECRUITER'}">
+                                                     ${user.recruiter.createdAt}
+                                                    </c:when>
+                                                    <c:when test="${user.role == 'STUDENT'}">
+                                                      ${user.student.createdAt}
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                      ${user.firstName} ${user.lastName}
+                                                    </c:otherwise>
+                                                  </c:choose></td>
                     </tr>
                 </c:forEach>
             </tbody>

@@ -2,15 +2,15 @@ package com.sam.career_connect.controller;
 
 import com.sam.career_connect.entity.*;
 import com.sam.career_connect.repository.*;
+import com.sam.career_connect.service.RecruiterService;
+import com.sam.career_connect.service.StudentService;
+import com.sam.career_connect.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,6 +39,15 @@ public class AdminController {
     @Autowired
     private ApplicationRepository applicationRepository;
 
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private StudentService studentService;
+
+    @Autowired
+    private RecruiterService recruiterService;
+
 
     @GetMapping("/login")
     public String adminLoginForm(){
@@ -50,7 +59,10 @@ public class AdminController {
         if (email.equals(adminEmail) && password.equals(adminPassword)) {
             model.addAttribute("totalStudents", studentRepository.count());
             model.addAttribute("totalRecruiters", recruiterRepository.count());
-            model.addAttribute("totalJobs", jobRepository.count());
+            List<User> recentUsers = userRepository.findTop5ByIsApprovedFalseOrderByIdDesc();
+            if(recentUsers!= null){
+                model.addAttribute("recentUsers", recentUsers);
+            }
             return "admin-dashboard";
         } else {
             model.addAttribute("error", "invalid email or password");
@@ -60,14 +72,14 @@ public class AdminController {
 
     @GetMapping("/students")
     public String adminStudents(Model model){
-        List<Student> students= studentRepository.findAll();
+        List<Student> students= studentRepository.findAllByUserIsBlockedFalse();
         model.addAttribute("students", students);
         return "admin-students";
     }
 
     @GetMapping("/recruiters")
     public String adminRecruiters(Model model){
-        List<Recruiter> recruiters= recruiterRepository.findAll();
+        List<Recruiter> recruiters= recruiterRepository.findAllByUserIsBlockedFalse();
         model.addAttribute("recruiters", recruiters);
         return "admin-recruiters";
     }
@@ -104,6 +116,21 @@ public class AdminController {
         return "platform-status";
     }
 
+    @GetMapping("/deactivate/{id}")
+    public String deactivateStudent(@PathVariable("id") Long id, Model model){
+        studentService.deactivateStudent(id);
+        List<Student> students= studentRepository.findAllByUserIsBlockedFalse();
+        model.addAttribute("students", students);
+        return "admin-students";
+    }
+
+    @GetMapping("/deactivate/{id}")
+    public String deactivateRecruiter(@PathVariable("id") Long id, Model model){
+        recruiterService.deactivateRecruiter(id);
+        List<Recruiter> recruiters= recruiterRepository.findAllByUserIsBlockedFalse();
+        model.addAttribute("recruiters", recruiters);
+        return "admin-recruiters";
+    }
 
 
 }
