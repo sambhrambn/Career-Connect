@@ -44,6 +44,11 @@ public class RecruiterController {
     public String studentLoginForm(){
         return "recruiter-login";
     }
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "home-page";
+    }
 
     @PostMapping("/dashboard")
     public String recruiterLogin(@RequestParam("email") String email, @RequestParam("password") String password, HttpSession session, Model model){
