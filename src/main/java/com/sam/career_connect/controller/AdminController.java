@@ -104,8 +104,6 @@ public class AdminController {
         return "platform-status";
     }
 
-
-
 }
 //    @GetMapping("/students")
 //    public ResponseEntity<List<String>> getAllStudentsNames() {

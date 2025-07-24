@@ -229,7 +229,7 @@
             <a href="/admin/jobs">View All Jobs</a>
             <a href="/admin/users">Manage Users</a>
             <a href="/admin/toggle">Toggle Job Visibility</a>
-            <a href="/admin/stats">View Detailed Stats</a>
+            <a href="/admin/status">View Detailed Status</a>
         </div>
     </div>
 
