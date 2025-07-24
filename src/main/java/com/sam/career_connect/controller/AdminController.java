@@ -148,9 +148,50 @@ public class AdminController {
         return "admin-jobview";
     }
 
+    @GetMapping("/deactivate-jobs/{id}/toggle")
+    public String deactivateJob(@PathVariable("id") Long id, Model model){
+        Job job= jobService.getJobById(id);
+        jobService.deactivateJob(job);
+        List<Job> jobs= jobRepository.findAll();
+        model.addAttribute("jobs", jobs);
+        return "admin-jobs";
+    }
+
+    @GetMapping("/users/{id}/approve")
+    public String userApprove(@PathVariable("id") Long id, Model model){
+        //completing
+        userService.doApprove(id);
+
+        List<User> users= userRepository.findAll();
+        model.addAttribute("users", users);
+        return "manage-users";
+    }
+
+    @GetMapping("/users/{id}/reject")
+    public String userReject(@PathVariable("id") Long id, Model model){
+        //completing
+        userService.doReject(id);
+
+        List<User> users= userRepository.findAll();
+        model.addAttribute("users", users);
+        return "manage-users";
+    }
+
+    @GetMapping("/jobs/{id}/toggle-visibility")
+    public String jobToggle(@PathVariable("id") Long id, Model model,HttpSession session){
+        Job job= jobService.getJobById(id);
+        model.addAttribute("job", job);
+        return "admin-jobview";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "home-page";
+    }
 
 }
-//    @GetMapping("/students")
+//    @GetMapping("/students") ///jobs/${job.id}/toggle-visibility
 //    public ResponseEntity<List<String>> getAllStudentsNames() {
 //        List<String> names = studentRepository.findAll()
 //                .stream()

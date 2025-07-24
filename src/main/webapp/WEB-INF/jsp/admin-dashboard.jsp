@@ -200,7 +200,7 @@
         <a href="/admin/recruiters">Recruiters</a>
         <a href="/admin/jobs">Jobs</a>
         <a href="/admin/users">Users</a>
-        <a href="/logout">Logout</a>
+        <a href="/admin/logout">Logout</a>
     </nav>
 </header>
 

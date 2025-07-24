@@ -251,18 +251,6 @@
             <c:otherwise>Inactive</c:otherwise>
         </c:choose>
     </div>
-
-    <div class="apply-button">
-        <c:choose>
-                <c:when test="${status == 'APPLIED'}">
-                    <button class="applied" disabled>Applied</button>
-                </c:when>
-
-                <c:otherwise>
-                    <button class="status-other" disabled>${status}</button>
-                </c:otherwise>
-            </c:choose>
-    </div>
 </div>
 
 <footer>

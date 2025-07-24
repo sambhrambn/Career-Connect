@@ -226,7 +226,7 @@
         <h1>Career Connect Admin | View All Students</h1>
     </div>
     <div class="header-right">
-        <a href="/logout" class="logout-btn">Logout</a>
+        <a href="/admin/logout" class="logout-btn">Logout</a>
     </div>
 </header>
 

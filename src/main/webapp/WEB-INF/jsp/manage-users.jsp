@@ -183,7 +183,7 @@
   <h1>Career Connect Admin | Manage Users</h1>
   <div class="header-buttons">
     <a href="/admin/dashboard">🔙 Back</a>
-    <a href="/logout">🚪 Logout</a>
+    <a href="/admin/logout">🚪 Logout</a>
   </div>
 </header>
 
@@ -257,7 +257,6 @@
           <td data-label="Actions" class="actions">
             <a class="approve-btn" href="/admin/users/${user.id}/approve">Approve</a>
             <a class="reject-btn" href="/admin/users/${user.id}/reject">Reject</a>
-            <a class="view-btn" href="/admin/users/${user.id}">View</a>
           </td>
         </tr>
       </c:forEach>

@@ -66,4 +66,20 @@ public class UserService {
     }
 
 
+    public void doApprove(Long id) {
+        User user = userRepository.findById(id).orElse(null);
+        if(user!=null){
+            user.setIsApproved(true);
+            userRepository.save(user);
+        }
+
+    }
+
+    public void doReject(Long id) {
+        User user = userRepository.findById(id).orElse(null);
+        if(user!=null){
+            user.setIsApproved(false);
+            userRepository.save(user);
+        }
+    }
 }

@@ -44,4 +44,16 @@ public class JobService {
         job.setActive(false);
         jobRepository.save(job);
     }
-}
+
+    public void deactivateJob(Job job) {
+        if(job.getActive()!=null && job.getActive()){
+            job.setActive(false);
+        }
+        else{
+            if(job.getActive()!=null) {
+                job.setActive(true);
+            }
+        }
+        jobRepository.save(job);
+    }}
+

@@ -200,7 +200,7 @@
         <a href="/admin/dashboard" class="back-btn">← Back</a>
         <div class="logo-text">Career Connect</div>
     </div>
-    <a href="/logout" class="logout-btn">Logout</a>
+    <a href="/admin/logout" class="logout-btn">Logout</a>
 </header>
 
 <div class="container">

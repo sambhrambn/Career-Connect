@@ -197,8 +197,8 @@
 <header>
   <div class="header-title">Career Connect Admin | View All Jobs</div>
   <div class="header-buttons">
-    <a href="/admin/home">⬅ Back</a>
-    <a href="/logout">🚪 Logout</a>
+    <a href="/admin/dashboard">⬅ Back</a>
+    <a href="/admin/logout">🚪 Logout</a>
   </div>
 </header>
 
@@ -240,7 +240,7 @@
           <td data-label="Actions" class="actions">
             <a class="view-btn" href="/admin/jobs/${job.id}">View</a>
             <a class="${job.active ? 'deactivate-btn' : 'toggle-btn'}"
-               href="/admin/jobs/${job.id}/toggle">
+               href="/admin/deactivate-jobs/${job.id}/toggle">
               ${job.active ? 'Deactivate' : 'Activate'}
             </a>
           </td>
