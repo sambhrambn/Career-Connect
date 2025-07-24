@@ -219,7 +219,7 @@
         <a href="/recruiter/profile">Profile</a>
         <a href="/recruiter/post-job">Post Job</a>
         <a href="/recruiter/applicants">Applicants</a>
-        <a href="/logout">Logout</a>
+        <a href="/recruiter/logout">Logout</a>
     </nav>
 </header>
 

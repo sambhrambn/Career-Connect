@@ -104,7 +104,7 @@ public class StudentService {
         if(user==null){
             return null;
         }
-        else if((user.getRole().equals(Role.STUDENT)) && !(user.getIsBlocked())){
+        else if((user.getRole().equals(Role.STUDENT)) && (!(user.getIsBlocked()) && user.getIsApproved())){
             return user.getStudent();
         }
        return null;
