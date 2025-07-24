@@ -46,7 +46,8 @@ public class RecruiterService {
         if(user==null){
             return null;
         }
-        else if(user.getRole().equals(Role.RECRUITER)){
+        //
+        else if((user.getRole().equals(Role.RECRUITER)) && (!(user.getIsBlocked()) && user.getIsApproved())){
             return user.getRecruiter();
         }
         return null;
