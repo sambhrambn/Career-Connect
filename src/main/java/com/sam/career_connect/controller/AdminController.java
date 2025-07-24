@@ -2,9 +2,7 @@ package com.sam.career_connect.controller;
 
 import com.sam.career_connect.entity.*;
 import com.sam.career_connect.repository.*;
-import com.sam.career_connect.service.RecruiterService;
-import com.sam.career_connect.service.StudentService;
-import com.sam.career_connect.service.UserService;
+import com.sam.career_connect.service.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,6 +45,12 @@ public class AdminController {
 
     @Autowired
     private RecruiterService recruiterService;
+
+    @Autowired
+    private JobService jobService;
+
+    @Autowired
+    private ApplicationService applicationService;
 
 
     @GetMapping("/login")
@@ -135,6 +139,12 @@ public class AdminController {
         List<Recruiter> recruiters= recruiterRepository.findAllByUserIsBlockedFalse();
         model.addAttribute("recruiters", recruiters);
         return "admin-recruiters";
+    }
+    @GetMapping("/jobs/{id}")
+    public String viewJobDetails(@PathVariable("id") Long id, Model model,HttpSession session){
+        Job job= jobService.getJobById(id);
+        model.addAttribute("job", job);
+        return "admin-jobview";
     }
 
 
