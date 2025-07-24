@@ -60,6 +60,11 @@ public class AdminController {
             model.addAttribute("totalStudents", studentRepository.count());
             model.addAttribute("totalRecruiters", recruiterRepository.count());
             List<User> recentUsers = userRepository.findTop5ByIsApprovedFalseOrderByIdDesc();
+            List<Job> recentJobs = jobRepository.findTop5ByOrderByIdDesc();
+            if(recentJobs!=null){
+                model.addAttribute("recentJobs", recentJobs);
+            }
+
             if(recentUsers!= null){
                 model.addAttribute("recentUsers", recentUsers);
             }

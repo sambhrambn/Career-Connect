@@ -1,6 +1,7 @@
 package com.sam.career_connect.repository;
 
 import com.sam.career_connect.entity.Job;
+import com.sam.career_connect.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,4 +15,5 @@ public interface JobRepository extends JpaRepository<Job,Long> {
     );
     List<Job> findAllByRecruiterIdAndVisibleTrueAndActiveTrue(Long recruiterId);
     List<Job> findAllByVisibleTrueAndActiveTrue();
+    List<Job> findTop5ByOrderByIdDesc();
 }
