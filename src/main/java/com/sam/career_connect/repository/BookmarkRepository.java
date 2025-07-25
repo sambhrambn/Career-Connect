@@ -11,7 +11,8 @@ import java.util.Optional;
 public interface BookmarkRepository extends JpaRepository<Bookmark,Long> {
     Long countByStudent_Id(Long id);
 
-    List<Bookmark> findAllByStudent_Id(Long studentId);
+    List<Bookmark> findAllByStudent_IdAndJob_ActiveTrueAndJob_VisibleTrue(Long studentId);
+
 
     Optional<Bookmark> findByStudent_IdAndJob_Id(Long studentId, Long jobId);
 }

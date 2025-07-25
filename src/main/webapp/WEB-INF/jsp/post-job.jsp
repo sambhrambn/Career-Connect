@@ -13,6 +13,7 @@
       --softwhite: #f5f5f5;
       --muted: #cccccc;
       --danger: #ff4d4d;
+      --success: #4CAF50;
     }
 
     * {
@@ -138,15 +139,6 @@
       transition: background-color 0.3s ease;
     }
 
-    .invisible-btn {
-      background-color: var(--skyblue);
-      color: #fff;
-    }
-
-    .invisible-btn:hover {
-      background-color: var(--hoverblue);
-    }
-
     .deactivate-btn {
       background-color: var(--danger);
       color: #fff;
@@ -154,6 +146,15 @@
 
     .deactivate-btn:hover {
       background-color: #e60000;
+    }
+
+    .activate-btn {
+      background-color: var(--success);
+      color: #fff;
+    }
+
+    .activate-btn:hover {
+      background-color: #45a049;
     }
 
     footer {
@@ -221,7 +222,6 @@
 <header>
   <div class="logo">Campus Career Portal</div>
   <nav>
-
     <a href="/recruiter/dashboard2">Back</a>
     <a href="/recruiter/logout">Logout</a>
   </nav>
@@ -239,8 +239,10 @@
         <p><strong>Workmode:</strong> ${job.workMode}</p>
         <p><strong>Type:</strong> ${job.jobType}</p>
         <div class="job-buttons">
-          <a href="/recruiter/job-invisible/${job.id}" class="invisible-btn">Make Invisible</a>
-          <a href="/recruiter/job-deactivate/${job.id}" class="deactivate-btn">Deactivate</a>
+          <a href="/admin/deactivate-jobs/${job.id}/toggle"
+             class="${job.active ? 'deactivate-btn' : 'activate-btn'}">
+            ${job.active ? 'Deactivate' : 'Activate'}
+          </a>
         </div>
       </div>
     </c:forEach>
