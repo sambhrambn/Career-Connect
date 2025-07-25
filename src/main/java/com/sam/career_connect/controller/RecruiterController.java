@@ -148,25 +148,26 @@ public class RecruiterController {
         return "home-page";
     }
 
-    @GetMapping("/job-invisible/{id}")
+    @GetMapping("/deactivate-jobs/{id}/toggle")
     public String makeInvisible(@PathVariable("id") Long jobId, Model model, HttpSession session){
-        jobService.makeJobInvisible(jobId);
+        Job job= jobService.getJobById(jobId);
+        jobService.deactivateJob(job);
         Long recruiterId = (Long) session.getAttribute("recruiterId");
         Recruiter recruiter = recruiterService.getRecruiter(recruiterId);
         List<Job> jobList=recruiterService.getJobs(recruiterId);
         model.addAttribute("jobList",jobList);
         return "post-job";
     }
-
-    @GetMapping("/job-deactivate/{id}")
-    public String makeDeactivate(@PathVariable("id") Long jobId, Model model, HttpSession session){
-        jobService.makeJobDeactivate(jobId);
-        Long recruiterId = (Long) session.getAttribute("recruiterId");
-        Recruiter recruiter = recruiterService.getRecruiter(recruiterId);
-        List<Job> jobList=recruiterService.getJobs(recruiterId);
-        model.addAttribute("jobList",jobList);
-        return "post-job";
-    }
+//
+//    @GetMapping("/job-deactivate/{id}")
+//    public String makeDeactivate(@PathVariable("id") Long jobId, Model model, HttpSession session){
+//        jobService.makeJobDeactivate(jobId);
+//        Long recruiterId = (Long) session.getAttribute("recruiterId");
+//        Recruiter recruiter = recruiterService.getRecruiter(recruiterId);
+//        List<Job> jobList=recruiterService.getJobs(recruiterId);
+//        model.addAttribute("jobList",jobList);
+//        return "post-job";
+//    }
 
     @GetMapping("/profile")
     public String recruiterProfile(HttpSession session,Model model){

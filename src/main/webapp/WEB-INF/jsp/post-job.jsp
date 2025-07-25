@@ -239,7 +239,7 @@
         <p><strong>Workmode:</strong> ${job.workMode}</p>
         <p><strong>Type:</strong> ${job.jobType}</p>
         <div class="job-buttons">
-          <a href="/admin/deactivate-jobs/${job.id}/toggle"
+          <a href="/recruiter/deactivate-jobs/${job.id}/toggle"
              class="${job.active ? 'deactivate-btn' : 'activate-btn'}">
             ${job.active ? 'Deactivate' : 'Activate'}
           </a>
