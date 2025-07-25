@@ -227,7 +227,7 @@
   <div class="logo">Campus Career Portal</div>
   <nav>
     <a href="/recruiter/dashboard2">Back</a>
-    <a href="/recruiter/post-Jobs">Posted Jobs</a>
+    <a href="/recruiter/post-jobs">Posted Jobs</a>
     <a href="/recruiter/logout">Logout</a>
   </nav>
 </header>
