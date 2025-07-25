@@ -32,7 +32,7 @@ public class HomeController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/dashboard2")
+    @RequestMapping("/dashboard2")
     public String adminDashboard2( Model model){
 
             model.addAttribute("totalStudents", studentRepository.count());
