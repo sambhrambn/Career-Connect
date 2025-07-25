@@ -63,7 +63,7 @@ public class RecruiterService {
 
 
     public List<Job> getJobs(Long recruiterId) {
-        return jobRepository.findAllByRecruiterIdAndVisibleTrueAndActiveTrue(recruiterId);
+        return jobRepository.findAllByRecruiterId(recruiterId);
     }
 
     public void registerRecruiter(RecruiterDto recruiterDto, User user, MultipartFile imageFile) {

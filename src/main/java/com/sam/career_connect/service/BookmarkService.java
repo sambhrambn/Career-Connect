@@ -41,7 +41,7 @@ public class BookmarkService {
     }
 
     public List<Bookmark> getBookmarkedJobs(Long studentId) {
-        return bookmarkRepository.findAllByStudent_Id(studentId);
+        return bookmarkRepository.findAllByStudent_IdAndJob_ActiveTrueAndJob_VisibleTrue(studentId);
     }
 
     public void removeBookmark(Long studentId, Long jobId) {
