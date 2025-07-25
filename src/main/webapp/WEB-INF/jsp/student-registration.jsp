@@ -274,9 +274,8 @@
 <header>
     <div class="logo">Campus Career Portal</div>
     <nav>
-        <a href="#">Home</a>
-        <a href="#">Login</a>
-        <a href="#">Register</a>
+        <a href="/student/home">Home</a>
+        <a href="/student/student-form">Login</a>
     </nav>
 </header>
 
@@ -397,34 +396,5 @@
         }
     });
 </script>
-<footer>
-    <div class="footer-container">
-        <div class="footer-column">
-            <h3>About Us</h3>
-            <p>Campus Career Portal bridges students, recruiters, and administrators to shape successful careers across universities.</p>
-        </div>
-        <div class="footer-column">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="/student/login">Student Login</a></li>
-                <li><a href="/recruiter/login">Recruiter Login</a></li>
-                <li><a href="/admin/login">Admin Panel</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h3>Contact</h3>
-            <p>Email: support@campuscareer.com</p>
-            <p>Phone: +91 98765 43210</p>
-            <div class="social-icons">
-                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" /></a>
-                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" /></a>
-                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="LinkedIn" /></a>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        © 2025 Campus Career Portal. All rights reserved.
-    </div>
-</footer>
 </body>
 </html>

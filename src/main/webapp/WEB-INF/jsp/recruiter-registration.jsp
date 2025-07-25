@@ -385,9 +385,8 @@
 <header>
     <div class="logo">Campus Career Portal</div>
     <nav>
-        <a href="#">Home</a>
-        <a href="#">Login</a>
-        <a href="#">Register</a>
+        <a href="/student/home">Home</a>
+        <a href="/recruiter/login">Login</a>
     </nav>
 </header>
 
@@ -467,7 +466,7 @@
         <div class="footer-column">
             <h3>Quick Links</h3>
             <ul>
-                <li><a href="/student/login">Student Login</a></li>
+                <li><a href="/student/student-form">Student Login</a></li>
                 <li><a href="/recruiter/login">Recruiter Login</a></li>
                 <li><a href="/admin/login">Admin Panel</a></li>
             </ul>

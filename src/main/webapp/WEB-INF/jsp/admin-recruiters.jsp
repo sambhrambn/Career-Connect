@@ -197,7 +197,7 @@
 
 <header>
     <div class="header-left">
-        <a href="/admin/dashboard" class="back-btn">← Back</a>
+        <a href="/home/dashboard2" class="back-btn">← Back</a>
         <div class="logo-text">Career Connect</div>
     </div>
     <a href="/admin/logout" class="logout-btn">Logout</a>

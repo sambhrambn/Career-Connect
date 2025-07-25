@@ -282,7 +282,7 @@
         <div class="footer-column">
             <h3>Quick Links</h3>
             <ul>
-                <li><a href="/student/login">Student Login</a></li>
+                <li><a href="/student/student-form">Student Login</a></li>
                 <li><a href="/recruiter/login">Recruiter Login</a></li>
                 <li><a href="/admin/login">Admin Panel</a></li>
             </ul>

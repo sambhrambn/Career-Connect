@@ -63,9 +63,21 @@ public class RecruiterController {
 
             return "recruiter-dashboard2";
         } else {
-            model.addAttribute("error", "invalid email or password");
+            model.addAttribute("error", "invalid email or password or approval pending");
             return "recruiter-login";
         }
+    }
+
+    @PostMapping("/dashboard2")
+    public String recruiterDashboard(HttpSession session, Model model){
+        Long recruiterId = (Long) session.getAttribute("recruiterId");
+        Recruiter recruiter=recruiterService.getRecruiter(recruiterId);
+            model.addAttribute("recruiter", recruiter);
+            model.addAttribute("user", recruiter.getUser());
+//            model.addAttribute("applicationCount", (Long)applicationService.getApplicationCount(student.getId()));
+//            model.addAttribute("bookmarkedCount", (Long)bookmarkService.getBookmarkedCount(student.getId()));
+//            model.addAttribute("shortListedCount", (Long)applicationService.getShortListedCount(student.getId()));
+            return "recruiter-dashboard2";
     }
 
     @GetMapping("/post-jobs")

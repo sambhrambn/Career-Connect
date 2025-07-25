@@ -210,7 +210,7 @@
     <div class="logo">Campus Career Portal</div>
     <nav>
         <a href="/recruiter/profile">Profile</a>
-        <a href="/recruiter/post-jobs">Posted Job</a>
+        <a href="/recruiter/post-jobs">Posted Jobs</a>
         <a href="/recruiter/applicants">Applicants</a>
         <a href="/recruiter/logout">Logout</a>
     </nav>
@@ -256,7 +256,7 @@
         <div class="footer-column">
             <h3>Quick Links</h3>
             <ul>
-                <li><a href="/student/login">Student Login</a></li>
+                <li><a href="/student/student-form">Student Login</a></li>
                 <li><a href="/recruiter/login">Recruiter Login</a></li>
                 <li><a href="/admin/login">Admin Panel</a></li>
             </ul>

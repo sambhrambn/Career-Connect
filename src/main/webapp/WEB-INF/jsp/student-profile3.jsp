@@ -250,7 +250,7 @@
 
 <header>
     <div class="logo">Campus Career Portal</div>
-
+    <a href="/home/dashboard2" class="back-btn">← Back</a>
 </header>
 
 <section class="profile-container">
@@ -293,7 +293,7 @@
         <div class="footer-column">
             <h3>Quick Links</h3>
             <ul>
-                <li><a href="/student/login">Student Login</a></li>
+                <li><a href="/student/student-form">Student Login</a></li>
                 <li><a href="/recruiter/login">Recruiter Login</a></li>
                 <li><a href="/admin/login">Admin Panel</a></li>
             </ul>
