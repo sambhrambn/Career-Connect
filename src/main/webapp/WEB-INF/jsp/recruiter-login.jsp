@@ -200,6 +200,11 @@
 
 <div class="login-container">
     <h2>Recruiter Login</h2>
+    <c:if test="${not empty error}">
+                <div style="color: red; font-weight: bold;">
+                    ${error}
+                </div>
+            </c:if>
     <form action="/recruiter/dashboard" method="post">
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" required placeholder="Enter your email">

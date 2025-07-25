@@ -68,7 +68,7 @@ public class RecruiterController {
         }
     }
 
-    @PostMapping("/dashboard2")
+    @RequestMapping("/dashboard2")
     public String recruiterDashboard(HttpSession session, Model model){
         Long recruiterId = (Long) session.getAttribute("recruiterId");
         Recruiter recruiter=recruiterService.getRecruiter(recruiterId);
