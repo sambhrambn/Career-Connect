@@ -274,8 +274,8 @@
 <header>
     <div class="logo">Campus Career Portal</div>
     <nav>
-        <a href="#">Home</a>
-        <a href="#">Login</a>
+        <a href="/student/home">Home</a>
+        <a href="/student/student-form">Login</a>
     </nav>
 </header>
 
