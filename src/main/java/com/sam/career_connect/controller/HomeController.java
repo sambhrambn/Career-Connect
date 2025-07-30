@@ -2,10 +2,7 @@ package com.sam.career_connect.controller;
 
 import com.sam.career_connect.entity.Job;
 import com.sam.career_connect.entity.User;
-import com.sam.career_connect.repository.JobRepository;
-import com.sam.career_connect.repository.RecruiterRepository;
-import com.sam.career_connect.repository.StudentRepository;
-import com.sam.career_connect.repository.UserRepository;
+import com.sam.career_connect.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +28,9 @@ public class HomeController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ApplicationRepository applicationRepository;
 
     @RequestMapping("/dashboard2")
     public String adminDashboard2( Model model){
